@@ -1,0 +1,28 @@
+---
+layout: page
+title: Teaching
+slug: teaching
+permalink: /teaching/
+kicker: Courses & material
+intro: Courses taught by lab members and the open tutorials we build for them.
+---
+{% for course in site.data.teaching.courses %}
+<section class="course">
+  <div class="course-head">
+    <h2>{{ course.title }}</h2>
+    {% if course.term %}<span class="tag">{{ course.term }}</span>{% endif %}
+  </div>
+  <p>{{ course.description }}</p>
+  <ul class="repos">
+    {% for m in course.materials %}
+    <li class="repo">
+      <a href="{{ m.url }}">
+        <span class="repo-name">{{ m.name }}</span>
+        <span class="repo-desc">{{ m.description }}</span>
+        {% if m.lang %}<span class="repo-lang"><i class="lang-dot lang-{{ m.lang | downcase }}"></i>{{ m.lang }}</span>{% endif %}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

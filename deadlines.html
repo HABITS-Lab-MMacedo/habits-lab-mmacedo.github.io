@@ -1,0 +1,32 @@
+---
+layout: page
+title: Conference deadlines
+slug: deadlines
+permalink: /deadlines/
+kicker: Plan ahead
+intro: Live countdowns for the venues we care about. Deadlines are Anywhere on Earth (AoE, UTC−12) unless noted — always confirm on the official call for papers.
+wide: true
+scripts:
+  - /assets/js/deadlines.js
+---
+<div class="toolbar">
+  <div class="chips" role="group" aria-label="Filter by area" id="area-filter">
+    <button class="chip" type="button" data-area="all" aria-pressed="true">All areas</button>
+  </div>
+  <label class="switch">
+    <input type="checkbox" id="show-past">
+    <span>Show past deadlines</span>
+  </label>
+</div>
+
+<p class="deadline-meta">Times shown in <strong id="local-tz">your time zone</strong>. Last edited {{ site.time | date: "%B %-d, %Y" }}.</p>
+
+<ol class="deadlines" id="deadline-list" aria-live="polite"></ol>
+<noscript><p>Enable JavaScript to see the countdowns. The raw list is in <code>_data/deadlines.yml</code>.</p></noscript>
+
+<h2 class="group-title">Dates not announced yet</h2>
+<ul class="tba" id="tba-list"></ul>
+
+<p class="credit">Initial data adapted from <a href="https://casp.jp/social-computing-deadlines/">Social Computing Deadlines</a> by Kazuki Kawamura (CC BY 4.0). To add a venue, edit <code>_data/deadlines.yml</code>.</p>
+
+<script id="deadline-data" type="application/json">{{ site.data.deadlines | jsonify }}</script>

@@ -1,0 +1,37 @@
+---
+layout: page
+title: Publications
+slug: publications
+permalink: /publications/
+kicker: Output
+intro: Papers, preprints and theses from the lab. Lab members are highlighted.
+scripts:
+  - /assets/js/publications.js
+---
+<div class="toolbar">
+  <label class="search">
+    <span class="visually-hidden">Search publications</span>
+    <input type="search" id="pub-search" placeholder="Search title, author or venue…" autocomplete="off">
+  </label>
+  <div class="chips" role="group" aria-label="Filter by type">
+    <button class="chip" type="button" data-type="all" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-type="journal" aria-pressed="false">Journal</button>
+    <button class="chip" type="button" data-type="conference" aria-pressed="false">Conference</button>
+    <button class="chip" type="button" data-type="preprint" aria-pressed="false">Preprint</button>
+  </div>
+</div>
+
+{% assign members = "" %}
+{% for group in site.data.people.groups %}{% for m in group.members %}{% assign members = members | append: m.name | append: "|" %}{% endfor %}{% endfor %}
+<div id="pub-list" data-members="{{ members | escape }}">
+{% assign by_year = site.data.publications | group_by: "year" | sort: "name" | reverse %}
+{% for year in by_year %}
+  <section class="pub-year" data-year="{{ year.name }}">
+    <h2>{{ year.name }}</h2>
+    <ul class="pubs">
+      {% for pub in year.items %}{% include publication.html pub=pub %}{% endfor %}
+    </ul>
+  </section>
+{% endfor %}
+</div>
+<p class="empty" id="pub-empty" hidden>No publications match your search.</p>

@@ -1,0 +1,62 @@
+# ------------------------------------------------------------------
+# PEOPLE
+# Each group becomes a section on the People page.
+#
+# Per person:
+#   name    (required)
+#   role    e.g. "PhD Student"
+#   topic   one short line about what they work on
+#   photo   static image, e.g. /assets/img/people/mariana.jpg
+#   gif     optional animated GIF, e.g. /assets/img/people/mariana.gif
+#           -> plays on hover (see people_gif_mode in _config.yml)
+#   link    personal website, Google Scholar or LinkedIn
+#
+# Tip: square images (e.g. 600×600) look best. Keep GIFs under ~2 MB.
+# Without a photo, a placeholder with the person's initials is shown.
+# ------------------------------------------------------------------
+
+groups:
+  - title: Principal Investigator
+    members:
+      - name: Mariana Macedo
+        role: Assistant Professor of Computer Science & Engineering
+        topic: network science, complex systems, human behaviour
+        photo: /assets/img/people/example.png
+        gif: /assets/img/people/example.gif
+        link: https://marianagmmacedo.github.io/
+
+  - title: PhD Students
+    members:
+      - name: Sthefanie Monica Premebida
+        role: PhD Student
+        topic: computational social science, XAI, gender in tech
+        photo: /assets/img/people/example.png
+        gif: /assets/img/people/example.gif
+        link: https://sthemonica.github.io/
+      # Copy the block above for each new member:
+      - name: New Member
+        role: PhD Student
+        topic: research topic
+        photo: ""
+        gif: ""
+        link: ""
+
+  - title: Master's & Bachelor's Students
+    members:
+      - name: Student Name
+        role: MSc Student
+        topic: research topic
+        photo: ""
+        gif: ""
+        link: ""
+
+# Simple list (no photos), like the Larremore Lab alumni section
+affiliated:
+  # - name: Researcher Name
+  #   note: Postdoc, Some University
+  #   link: https://example.org
+
+alumni:
+  # - name: Former Student
+  #   note: MSc 2026 → Data Scientist at Company
+  #   link: https://example.org

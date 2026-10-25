@@ -1,0 +1,47 @@
+# ------------------------------------------------------------------
+# RESEARCH THEMES — shown on the Home and Research pages
+# icon: one of  network | people | city | scale | chart | spark
+# TODO: review texts with the PI
+# ------------------------------------------------------------------
+
+- title: Human behaviour
+  icon: people
+  summary: >-
+    How individual habits and collective patterns emerge from interactions,
+    measured through digital traces, surveys and large-scale behavioural data.
+  keywords: [mobility, social interaction, digital traces]
+
+- title: Network science
+  icon: network
+  summary: >-
+    Models and methods for complex networks — structure, dynamics and the
+    processes that unfold on them, from collaboration to information spread.
+  keywords: [complex networks, network dynamics, collaboration]
+
+- title: Complex systems & society
+  icon: city
+  summary: >-
+    Using computational models to understand inequality, cities and
+    political participation, and to inform fairer, more accessible systems.
+  keywords: [urban systems, inequality, civic tech]
+
+- title: Diversity in science & tech
+  icon: scale
+  summary: >-
+    Quantifying gender and diversity gaps in computing and science, and
+    evaluating interventions that make research communities more inclusive.
+  keywords: [gender gap, belonging, science of science]
+
+- title: Explainable & responsible AI
+  icon: spark
+  summary: >-
+    Interpretable machine learning for social data, so models that describe
+    people can be inspected, questioned and trusted.
+  keywords: [XAI, fairness, communication analysis]
+
+- title: Data visualisation
+  icon: chart
+  summary: >-
+    Visual ways of communicating results from network and behavioural
+    research to scientists, decision-makers and the public.
+  keywords: [visual analytics, science communication]

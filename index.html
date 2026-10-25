@@ -1,0 +1,88 @@
+---
+layout: default
+title: HABITS Lab
+slug: home
+scripts:
+  - /assets/js/network.js
+---
+<section class="hero">
+  <canvas class="hero-network" id="hero-network" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <p class="kicker">{{ site.institution.name }} · Bremen</p>
+    <h1 class="hero-title">Understanding <em>habits</em>,<br> one connection at a time.</h1>
+    <p class="lede">{{ site.description }}</p>
+    <div class="hero-actions">
+      <a class="btn btn--primary" href="{{ '/research/' | relative_url }}">Our research</a>
+      <a class="btn" href="{{ '/join/' | relative_url }}">Join the lab</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head">
+    <h2>What we study</h2>
+    <a class="more" href="{{ '/research/' | relative_url }}">All themes →</a>
+  </div>
+  <ul class="themes">
+    {% for theme in site.data.research limit: 6 %}
+    <li class="theme">
+      {% include icon.html name=theme.icon %}
+      <h3>{{ theme.title }}</h3>
+      <p>{{ theme.summary }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="section section--tint">
+  <div class="wrap split">
+    <div>
+      <div class="section-head">
+        <h2>News</h2>
+        <a class="more" href="{{ '/news/' | relative_url }}">All news →</a>
+      </div>
+      <ul class="news-list">
+        {% for post in site.posts limit: 4 %}
+        <li>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <div class="section-head">
+        <h2>Selected publications</h2>
+        <a class="more" href="{{ '/publications/' | relative_url }}">All →</a>
+      </div>
+      {% assign selected = site.data.publications | where: "selected", true | sort: "year" | reverse %}
+      <ul class="pubs pubs--compact">
+        {% for pub in selected limit: 4 %}{% include publication.html pub=pub show_year=true %}{% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-head">
+    <h2>People</h2>
+    <a class="more" href="{{ '/people/' | relative_url }}">Meet everyone →</a>
+  </div>
+  <ul class="people people--strip">
+    {% for group in site.data.people.groups %}
+      {% for person in group.members %}
+        {% unless person.photo == "" %}{% include person-card.html person=person %}{% endunless %}
+      {% endfor %}
+    {% endfor %}
+  </ul>
+</section>
+
+<section class="wrap section">
+  <div class="cta">
+    <div>
+      <h2>Upcoming deadlines</h2>
+      <p>Countdowns to the network science, computational social science and HCI venues we submit to.</p>
+    </div>
+    <a class="btn btn--primary" href="{{ '/deadlines/' | relative_url }}">See the tracker</a>
+  </div>
+</section>

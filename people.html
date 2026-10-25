@@ -1,0 +1,34 @@
+---
+layout: page
+title: People
+slug: people
+permalink: /people/
+kicker: The lab
+intro: Researchers and students working together on human behaviour, networks and complex systems. Hover over a photo to say hello.
+---
+<div class="people-page" data-gif-mode="{{ site.people_gif_mode | default: 'hover' }}">
+{% for group in site.data.people.groups %}
+  <h2 class="group-title">{{ group.title }}</h2>
+  <ul class="people">
+    {% for person in group.members %}{% include person-card.html person=person %}{% endfor %}
+  </ul>
+{% endfor %}
+
+{% if site.data.people.affiliated %}
+  <h2 class="group-title">Affiliated researchers</h2>
+  <ul class="plain-list">
+    {% for p in site.data.people.affiliated %}
+    <li>{% if p.link %}<a href="{{ p.link }}">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}{% if p.note %} — {{ p.note }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if site.data.people.alumni %}
+  <h2 class="group-title">Alumni</h2>
+  <ul class="plain-list">
+    {% for p in site.data.people.alumni %}
+    <li>{% if p.link %}<a href="{{ p.link }}">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}{% if p.note %} — {{ p.note }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+</div>

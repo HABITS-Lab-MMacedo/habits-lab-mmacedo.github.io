@@ -1,0 +1,26 @@
+---
+layout: page
+title: News
+slug: news
+permalink: /news/
+kicker: Updates
+intro: Papers, talks, awards and everything else happening in the lab.
+---
+{% assign by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+{% for year in by_year %}
+<section class="news-year">
+  <h2>{{ year.name }}</h2>
+  <ul class="news-cards">
+    {% for post in year.items %}
+    <li class="news-card">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+      <div>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.excerpt | strip_html | strip_newlines | truncate: 180 }}</p>
+        {% if post.tags.size > 0 %}<p class="tags">{% for tag in post.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</p>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endfor %}

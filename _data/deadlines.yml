@@ -1,0 +1,168 @@
+# ------------------------------------------------------------------
+# CONFERENCE DEADLINES — the Deadlines page shows live countdowns.
+#
+#   name        short name with year, e.g. "ICWSM 2027"
+#   full        full conference name
+#   url         call for papers
+#   location    city, country
+#   area        Network Science | Computational Social Science |
+#               Web & Social Media | HCI & Society | AI & Fairness
+#   conference  conference dates as free text
+#   deadlines   list of { label, date: "YYYY-MM-DD", time: "HH:MM", tz }
+#               time defaults to 23:59, tz defaults to AoE (UTC−12).
+#               tz can also be a number of hours, e.g. 1 for CET, 0 for UTC.
+#   note        optional, e.g. "rolling submissions"
+#
+# Leave deadlines empty ( deadlines: [] ) when dates are not announced yet.
+# Initial dates collected on 2026-10-25 from casp.jp/social-computing-deadlines
+# and the official sites — always confirm on the official call for papers.
+# ------------------------------------------------------------------
+
+- name: WWW 2027
+  full: The ACM Web Conference
+  url: https://acmweb2027.org/
+  location: Dublin, Ireland
+  area: Web & Social Media
+  conference: May 10–14, 2027
+  deadlines:
+    - { label: "Abstract", date: "2026-10-18" }
+    - { label: "Full paper", date: "2026-10-25" }
+
+- name: CHIIR 2027
+  full: ACM SIGIR Conference on Human Information Interaction and Retrieval
+  url: https://chiir2027.github.io/
+  location: Berlin, Germany
+  area: HCI & Society
+  conference: March 7–11, 2027
+  deadlines:
+    - { label: "Full & perspective papers", date: "2026-10-15" }
+    - { label: "Short papers", date: "2026-10-29" }
+    - { label: "Demos, design & resource papers", date: "2026-10-29" }
+
+- name: FAccT 2027
+  full: ACM Conference on Fairness, Accountability, and Transparency
+  url: https://facctconference.org/2027/cfp.html
+  location: ""
+  area: AI & Fairness
+  conference: June 21–24, 2027
+  deadlines:
+    - { label: "Abstract", date: "2026-10-27" }
+    - { label: "Full paper", date: "2026-11-03" }
+
+- name: C&T 2027
+  full: ACM International Conference on Communities and Technologies
+  url: https://2027.comtech.community/
+  location: Delft, The Netherlands
+  area: Computational Social Science
+  conference: April 12–16, 2027
+  deadlines:
+    - { label: "Full, short & exploratory papers", date: "2026-11-09" }
+
+- name: CHI 2027
+  full: ACM CHI Conference on Human Factors in Computing Systems
+  url: https://chi2027.acm.org/
+  location: Pittsburgh, PA, USA
+  area: HCI & Society
+  conference: May 10–14, 2027
+  deadlines:
+    - { label: "Full paper", date: "2026-09-10" }
+    - { label: "Revise & resubmit", date: "2026-12-03" }
+
+- name: WebSci 2027
+  full: ACM Web Science Conference
+  url: https://websci27.webscience.org/
+  location: Singapore
+  area: Web & Social Media
+  conference: May 25–28, 2027
+  deadlines:
+    - { label: "Full paper", date: "2026-12-15" }
+
+- name: ICWSM 2027
+  full: International AAAI Conference on Web and Social Media
+  url: https://www.icwsm.org/2027/
+  location: Edinburgh, United Kingdom
+  area: Web & Social Media
+  conference: ""
+  deadlines:
+    - { label: "Round 2 full paper", date: "2026-09-15" }
+    - { label: "Round 3 full paper", date: "2027-01-15" }
+
+- name: DIS 2027
+  full: ACM Conference on Designing Interactive Systems
+  url: https://dis.acm.org/2027/
+  location: Stockholm, Sweden
+  area: HCI & Society
+  conference: June 28 – July 2, 2027
+  deadlines:
+    - { label: "Abstract & title", date: "2027-01-11" }
+    - { label: "Full papers & pictorials", date: "2027-01-18" }
+
+- name: INTERACT 2027
+  full: IFIP TC13 International Conference on Human-Computer Interaction
+  url: https://interact2027.org/
+  location: Tallinn, Estonia
+  area: HCI & Society
+  conference: August 23–27, 2027
+  deadlines:
+    - { label: "Metadata registration", date: "2027-01-25" }
+    - { label: "Full paper", date: "2027-02-01" }
+
+- name: Complex Networks 2026
+  full: International Conference on Complex Networks and their Applications
+  url: https://complexnetworks.org/
+  location: Granada, Spain
+  area: Network Science
+  conference: December 2–4, 2026
+  deadlines:
+    - { label: "Full paper / extended abstract", date: "2026-09-13" }
+
+- name: AAMAS 2027
+  full: International Conference on Autonomous Agents and Multiagent Systems
+  url: https://warwick.ac.uk/fac/sci/dcs/aamas2027/
+  location: Hanoi, Vietnam
+  area: AI & Fairness
+  conference: May 3–7, 2027
+  deadlines:
+    - { label: "Abstract", date: "2026-10-01" }
+    - { label: "Full paper", date: "2026-10-08" }
+
+- name: IC2S2 2027
+  full: International Conference on Computational Social Science
+  url: https://ic2s2.org/
+  location: ""
+  area: Computational Social Science
+  conference: Not announced yet (usually July)
+  deadlines: []
+
+- name: NetSci 2027
+  full: International School and Conference on Network Science
+  url: https://netscisociety.net/
+  location: ""
+  area: Network Science
+  conference: Not announced yet (usually June)
+  deadlines: []
+
+- name: CCS 2027
+  full: Conference on Complex Systems
+  url: https://cssociety.org/
+  location: ""
+  area: Network Science
+  conference: Not announced yet (usually autumn)
+  deadlines: []
+
+- name: Sunbelt 2027
+  full: International Sunbelt Social Network Conference (INSNA)
+  url: https://www.insna.org/
+  location: Montréal, Canada
+  area: Network Science
+  conference: June 21–26, 2027
+  deadlines: []
+
+- name: CSCW
+  full: ACM Conference on Computer-Supported Cooperative Work and Social Computing
+  url: https://cscw.acm.org/
+  location: ""
+  area: Computational Social Science
+  conference: ""
+  note: Rolling submissions — no fixed deadline
+  deadlines: []

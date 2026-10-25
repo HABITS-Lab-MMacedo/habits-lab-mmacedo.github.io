@@ -1,0 +1,19 @@
+{% assign p = include.person %}
+{% assign parts = p.name | split: " " %}
+{% assign first = parts | first | slice: 0 %}
+{% assign last = parts | last | slice: 0 %}
+<li class="person">
+  {% if p.link and p.link != "" %}<a class="person-link" href="{{ p.link }}" title="{{ p.name }}">{% else %}<div class="person-link">{% endif %}
+    <div class="person-photo{% if p.gif and p.gif != '' %} has-gif{% endif %}">
+      {% if p.photo and p.photo != "" %}
+        <img src="{{ p.photo | relative_url }}" alt="Photo of {{ p.name }}" loading="lazy" width="600" height="600"
+             data-static="{{ p.photo | relative_url }}"{% if p.gif and p.gif != "" %} data-gif="{{ p.gif | relative_url }}"{% endif %}>
+      {% else %}
+        <span class="person-initials" aria-hidden="true">{{ first }}{% if parts.size > 1 %}{{ last }}{% endif %}</span>
+      {% endif %}
+    </div>
+    <p class="person-name">{{ p.name }}</p>
+  {% if p.link and p.link != "" %}</a>{% else %}</div>{% endif %}
+  {% if p.role %}<p class="person-role">{{ p.role }}</p>{% endif %}
+  {% if p.topic %}<p class="person-topic">{{ p.topic }}</p>{% endif %}
+</li>

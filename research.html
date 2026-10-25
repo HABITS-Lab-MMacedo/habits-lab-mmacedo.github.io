@@ -1,0 +1,26 @@
+---
+layout: page
+title: Research
+slug: research
+permalink: /research/
+kicker: What we do
+intro: We combine network science, data and computational models to understand how people behave — individually and together — and to make the systems around them fairer.
+---
+<ul class="themes themes--large">
+  {% for theme in site.data.research %}
+  <li class="theme">
+    {% include icon.html name=theme.icon %}
+    <h2>{{ theme.title }}</h2>
+    <p>{{ theme.summary }}</p>
+    {% if theme.keywords %}<p class="tags">{% for k in theme.keywords %}<span class="tag">{{ k }}</span>{% endfor %}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<div class="cta">
+  <div>
+    <h2>Code &amp; data</h2>
+    <p>Our tools, teaching material and datasets are open on GitHub.</p>
+  </div>
+  <a class="btn" href="https://github.com/{{ site.contact.github }}">github.com/{{ site.contact.github }}</a>
+</div>

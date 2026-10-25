@@ -1,0 +1,40 @@
+# ------------------------------------------------------------------
+# TEACHING — courses and open teaching material
+# ------------------------------------------------------------------
+
+courses:
+  - title: Software Development & Operation (SDO)
+    term: Fall 2026
+    description: >-
+      Hands-on tutorials on containers, orchestration and continuous
+      integration, built for the SDO course at Constructor University.
+    materials:
+      - name: sdo-docker-lab
+        description: Containerise C programs, from a first Dockerfile to a web server with port mapping.
+        url: https://github.com/HABITS-Lab-MMacedo/sdo-docker-lab
+        lang: C
+      - name: sdo-k8s-tutorial
+        description: Kubernetes tutorial exercises.
+        url: https://github.com/HABITS-Lab-MMacedo/sdo-k8s-tutorial
+        lang: C
+      - name: sdo-cicd-lab
+        description: Continuous integration and delivery lab.
+        url: https://github.com/HABITS-Lab-MMacedo/sdo-cicd-lab
+        lang: C
+      - name: sdo-deployment-tutorial
+        description: Deployment tutorial.
+        url: https://github.com/HABITS-Lab-MMacedo/sdo-deployment-tutorial
+        lang: Shell
+      - name: ExponentialCalculation
+        description: A simple end-to-end exercise with Docker, Kubernetes, GitHub Actions and Jenkins.
+        url: https://github.com/HABITS-Lab-MMacedo/ExponentialCalculation_DockerKubernetesGitActionsJenkins
+        lang: C
+      - name: HarderExponentialCalculation
+        description: The harder follow-up exercise of the same pipeline.
+        url: https://github.com/HABITS-Lab-MMacedo/HarderExponentialCalculation_DockerKubernetesGitActionsJenkins
+        lang: HTML
+
+  # - title: Introduction to Artificial Intelligence
+  #   term: Spring 2027
+  #   description: ...
+  #   materials: []

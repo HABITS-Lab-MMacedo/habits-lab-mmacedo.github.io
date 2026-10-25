@@ -1,0 +1,10 @@
+{% assign pub = include.pub %}
+<li class="pub" data-year="{{ pub.year }}" data-type="{{ pub.type }}">
+  <p class="pub-title">{% if pub.doi and pub.doi != "" %}<a href="{% if pub.doi contains 'http' %}{{ pub.doi }}{% else %}https://doi.org/{{ pub.doi }}{% endif %}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</p>
+  <p class="pub-authors">{{ pub.authors }}</p>
+  <p class="pub-meta"><em>{{ pub.venue }}</em>{% if include.show_year %} · {{ pub.year }}{% endif %}
+    {% if pub.type %}<span class="tag tag--{{ pub.type }}">{{ pub.type }}</span>{% endif %}
+  </p>
+  {% capture links %}{% if pub.pdf and pub.pdf != "" %}<a href="{{ pub.pdf | relative_url }}">PDF</a>{% endif %}{% if pub.code and pub.code != "" %}<a href="{{ pub.code }}">Code</a>{% endif %}{% if pub.data and pub.data != "" %}<a href="{{ pub.data }}">Data</a>{% endif %}{% if pub.doi and pub.doi != "" %}<a href="{% if pub.doi contains 'http' %}{{ pub.doi }}{% else %}https://doi.org/{{ pub.doi }}{% endif %}">DOI</a>{% endif %}{% endcapture %}
+  {% if links != "" %}<p class="pub-links">{{ links }}</p>{% endif %}
+</li>

@@ -1,0 +1,65 @@
+# ------------------------------------------------------------------
+# HABITS Lab website — main settings
+# After editing this file, GitHub Pages rebuilds the site automatically.
+# ------------------------------------------------------------------
+
+title: HABITS Lab
+# TODO: replace with the official meaning of the acronym, if there is one
+tagline: Human behaviour, network science & complex systems
+description: >-
+  The HABITS Lab at Constructor University (Bremen) studies human behaviour
+  through networks, data and computational models.
+
+# Organisation site: https://habits-lab-mmacedo.github.io
+url: "https://habits-lab-mmacedo.github.io"
+baseurl: ""
+
+institution:
+  name: Constructor University
+  url: https://constructor.university
+  department: School of Computer Science and Engineering
+  address: Campus Ring 1, 28759 Bremen, Germany
+
+contact:
+  email: marianagmmacedo@gmail.com   # TODO: change to the lab / university email
+  github: HABITS-Lab-MMacedo
+  bluesky: ""                        # e.g. habitslab.bsky.social
+  linkedin: ""                       # full URL
+
+# Main menu (order = order in the header)
+navigation:
+  - title: People
+    url: /people/
+  - title: Research
+    url: /research/
+  - title: Publications
+    url: /publications/
+  - title: Deadlines
+    url: /deadlines/
+  - title: Teaching
+    url: /teaching/
+  - title: News
+    url: /news/
+  - title: Join us
+    url: /join/
+
+# How GIFs on the People page behave:
+#   hover  -> photo is static, GIF plays when the mouse is over the card
+#             (on phones/tablets, which have no hover, GIFs play automatically)
+#   always -> GIF always plays
+people_gif_mode: hover
+
+# News posts live in _posts/ — one Markdown file per post
+permalink: /news/:year/:month/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules

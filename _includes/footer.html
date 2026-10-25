@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="footer-title"><strong>HABITS</strong> Lab</p>
+      <p>{{ site.institution.department }}<br>
+        <a href="{{ site.institution.url }}">{{ site.institution.name }}</a><br>
+        {{ site.institution.address }}</p>
+    </div>
+    <div>
+      <p class="footer-title">Contact</p>
+      <ul class="footer-links">
+        {% if site.contact.email != "" %}<li><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></li>{% endif %}
+        {% if site.contact.github != "" %}<li><a href="https://github.com/{{ site.contact.github }}">GitHub</a></li>{% endif %}
+        {% if site.contact.bluesky != "" %}<li><a href="https://bsky.app/profile/{{ site.contact.bluesky }}">Bluesky</a></li>{% endif %}
+        {% if site.contact.linkedin != "" %}<li><a href="{{ site.contact.linkedin }}">LinkedIn</a></li>{% endif %}
+      </ul>
+    </div>
+    <div>
+      <p class="footer-title">Explore</p>
+      <ul class="footer-links">
+        {% for item in site.navigation %}<li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© {{ site.time | date: "%Y" }} HABITS Lab · Constructor University</span>
+    <span>Built with Jekyll on GitHub Pages</span>
+  </div>
+</footer>

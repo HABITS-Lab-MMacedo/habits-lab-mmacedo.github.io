@@ -1,0 +1,34 @@
+# ------------------------------------------------------------------
+# PUBLICATIONS — newest first is not required; the page sorts by year.
+#
+#   title    (required)
+#   authors  write lab members exactly as in people.yml to highlight them
+#   venue    journal or conference
+#   year     (required)
+#   type     journal | conference | preprint | workshop | thesis
+#   pdf / doi / code / data   optional links
+#   selected true -> also shown on the Home page
+#
+# The two entries below are EXAMPLES — replace them with real papers.
+# ------------------------------------------------------------------
+
+- title: "Example paper title — replace with a real publication"
+  authors: "Sthefanie Monica Premebida, Mariana Macedo"
+  venue: "Applied Network Science"
+  year: 2026
+  type: journal
+  doi: ""
+  pdf: ""
+  code: ""
+  selected: true
+
+- title: "Another example: a conference paper with code and data"
+  authors: "Mariana Macedo, Co-Author Name"
+  venue: "International Conference on Computational Social Science (IC2S2)"
+  year: 2025
+  type: conference
+  doi: ""
+  pdf: ""
+  code: "https://github.com/HABITS-Lab-MMacedo"
+  data: ""
+  selected: true
