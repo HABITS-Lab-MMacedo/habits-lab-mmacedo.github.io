@@ -207,13 +207,11 @@ code { font-family: var(--font-mono); font-size: .88em; background: var(--bg-tin
 .switch input { accent-color: var(--accent); width: 17px; height: 17px; }
 
 /* ---------- hero ---------- */
-.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-.hero-network { position: absolute; inset: 0; width: 100%; height: 100%; }
-.hero-inner { position: relative; padding-top: clamp(72px, 12vw, 140px); padding-bottom: clamp(64px, 10vw, 120px); pointer-events: none; }
-.hero-inner a, .hero-inner .btn { pointer-events: auto; }
+.hero { border-bottom: 1px solid var(--line); }
+.hero-inner { padding-top: clamp(72px, 12vw, 140px); padding-bottom: clamp(64px, 10vw, 120px); }
 .hero-title { font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.02; max-width: 15ch; margin-bottom: .35em; }
 .hero-title em { font-style: italic; color: var(--accent); }
-.hero .lede { max-width: 34rem; text-shadow: 0 0 18px var(--bg), 0 0 6px var(--bg); }
+.hero .lede { max-width: 34rem; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
 /* ---------- sections ---------- */
@@ -388,6 +386,7 @@ a.person-link:hover .person-name { color: var(--accent); }
 }
 .cta h2 { margin: 0 0 4px; }
 .cta p { margin: 0; color: var(--ink-soft); }
+.cta .kicker { margin: 0 0 1rem; color: var(--ink-faint); }
 
 /* ---------- footer ---------- */
 .site-footer { border-top: 1px solid var(--line); background: var(--bg-tint); font-size: .93rem; color: var(--ink-soft); }
