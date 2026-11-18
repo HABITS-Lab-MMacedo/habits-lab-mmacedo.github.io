@@ -257,18 +257,59 @@ groups:
         gif: /assets/img/people/example.gif
         link: https://sthemonica.github.io/
       # Copy the block above for each new member:
-      - name: New Member
+      - name: Coming soon
         role: PhD Student
-        topic: research topic
         photo: ""
         gif: ""
         link: ""
 
   - title: Master's & Bachelor's Students
     members:
-      - name: Student Name
+      - name: Asmaa Elsaeed Ali Kashef
         role: MSc Student
-        topic: research topic
+        topic: "Advanced Project (Fall 2026): How AI are you?"
+        photo: ""
+        gif: ""
+        link: ""
+      - name: Mariem Lajili
+        role: MSc Student
+        topic: "Advanced Project (Fall 2026): How AI are you?"
+        photo: ""
+        gif: ""
+        link: ""
+      - name: Shifa Kayumbhai Bhari
+        role: MSc Student
+        topic: "Advanced Project (Fall 2026): How AI are you?"
+        photo: ""
+        gif: ""
+        link: ""
+      - name: Subhankar Biswas
+        role: MSc Student
+        topic: "Advanced Project (Fall 2026): How AI are you?"
+        photo: ""
+        gif: ""
+        link: ""
+      - name: Ahmed Hamzaoui
+        role: MSc Student
+        topic: "Advanced Project (Fall 2026): Mobility"
+        photo: ""
+        gif: ""
+        link: ""
+      - name: Thamelia Hleketani Mkhawana
+        role: MSc Student
+        topic: "Advanced Project (Fall 2026): Science of Science"
+        photo: ""
+        gif: ""
+        link: ""
+      - name: Nathan Assefa Ashenafi
+        role: BSc Student
+        topic: "Bachelor Thesis (Spring 2027): How AI are you?"
+        photo: ""
+        gif: ""
+        link: ""
+      - name: Salima Lyouk
+        role: BSc Student
+        topic: "Bachelor Thesis (Spring 2027): How AI are you?"
         photo: ""
         gif: ""
         link: ""
@@ -284,15 +325,21 @@ alumni:
   #   note: MSc 2026 → Data Scientist at Company
   #   link: https://example.org
   - name: Rodrigo Lira
-    note: PhD
+    note: PhD, University of Pernambuco
   - name: Ghita Housni
-    note: MSc
+    note: MSc, Northeastern University London
   - name: Pedro Santos
-    note: BSc
+    note: BSc, University of Pernambuco
+  - name: Daniel Ubong
+    note: "BSc, Constructor University, Spring 2026. Thesis: Machine Learning for Sleep State Analysis and Stimulation"
+  - name: Siwoo Lee
+    note: "BSc, Constructor University, Spring 2026. Thesis: Optimization of Complex Traversal Mechanics in a Custom 2D Platformer Using Evolutionary Algorithms"
+  - name: Gerard Nahimana
+    note: "BSc, Constructor University, Spring 2026. Thesis: Machine Learning for the Detection of Financial Amount Discrepancies in NGO Supporting Documents"
   - name: Nishant Gurrapadi
-    note: BSc
+    note: Summer Mentorship, Florida Institute of Technology
   - name: Lydia Taw
-    note: BSc
+    note: Summer Mentorship, Florida Institute of Technology
   - name: Tiger-Rose Swithenbank-Michel
     note: MSc, Northeastern University London
   - name: Aloh Stanley Benjamin
