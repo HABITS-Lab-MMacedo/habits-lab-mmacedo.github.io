@@ -26,57 +26,192 @@ groups:
         gif: /assets/img/people/example.gif     # TODO: real GIF
         link: /people/mariana-macedo/
         # --- Everything below is shown on the PI's own page
-        #     (mariana-macedo.html → /people/mariana-macedo/) ---
-        bio: >-
-          Mariana leads the HABITS Lab at Constructor University's School of
-          Computer Science & Engineering. Her research combines data science,
-          network science and AI to understand how social, historical and
-          structural factors shape unequal access to opportunities — from
-          mobility and careers to resources, health and fairness. She also
-          studies AI systems themselves, modelling how agents interact in order
-          to make AI more transparent, accountable, fair and trustworthy.
-        interests:
-          - Applied AI & human–AI interfaces
-          - Human dynamics
-          - Gender, race & socioeconomic inequalities
-          - Complex & urban systems
-          - Swarm intelligence & evolutionary computation
+        #     (mariana-macedo.html → /people/mariana-macedo/).
+        #     Sources: university profile + CV (2026). ---
+        # Publications on the PI page load live from OpenAlex (openalex.org),
+        # so new papers appear automatically once OpenAlex indexes them.
+        # Find an ID by searching https://api.openalex.org/authors?search=Your%20Name
+        openalex: A5009239429
+        orcid: 0000-0002-7071-379X
         email: mmacedo@constructor.university
         office: Research I, Room 86
+        # Bio: separate paragraphs with an empty line
+        bio: |-
+          Mariana Macedo is an Assistant Professor of Computer Science & Engineering
+          at Constructor University in Bremen and leads the HABITS Lab. Mariana's
+          research combines data science, network science and AI to understand how
+          social, historical and structural factors shape unequal access to
+          opportunities — from mobility and careers to resources, health and
+          fairness. The work also turns to AI systems themselves, modelling how
+          agents interact in order to make AI more transparent, accountable, fair and
+          trustworthy.
+
+          Before joining Constructor University in 2026, Mariana was an Assistant
+          Professor in Data Science at Northeastern University London and a
+          postdoctoral researcher at the Center for Collective Learning (ANITI,
+          University of Toulouse). Mariana holds a PhD in Computer Science from the
+          University of Exeter, and an MSc and BSc in Computer Engineering from the
+          University of Pernambuco, Brazil.
         links:
           - label: Personal website
             url: https://marianagmmacedo.github.io/
+          - label: CV (PDF)
+            url: https://drive.google.com/file/d/1wfqrd3-PnPBbCMZd9O4AXESN4x2nDdeB/view
           - label: Google Scholar
             url: https://scholar.google.com/citations?hl=en&user=1tGv4IIAAAAJ
+          - label: ORCID
+            url: https://orcid.org/0000-0002-7071-379X
+          - label: GitHub
+            url: https://github.com/marianagmmacedo
+          - label: Bluesky
+            url: https://bsky.app/profile/marianagmmacedo.bsky.social
           - label: LinkedIn
             url: https://www.linkedin.com/in/mariana-macedo-136b06b0/
-          - label: CV (PDF)
-            url: https://constructor.university/sites/default/files/2026-02/MarianaMacedo_CV_2026-2.pdf
           - label: University profile
             url: https://constructor.university/faculty-member/mariana-macedo
+        research:
+          - title: Human behaviour, networks & complex systems
+            items:
+              - topic: Mobility
+                text: How gender, parenthood, household structure and socioeconomic status shape human mobility and urban inequality — and how commodities move, modelled with vector fields.
+              - topic: Collective memory
+                text: The local and global components of collective memory, measured from multilingual online attention data.
+              - topic: Science of science
+                text: How women and men build research careers, and gender inequality in scientific rankings.
+              - topic: Online communication
+                text: Gendered engagement, visibility and interaction on social media.
+              - topic: Public health
+                text: Human behaviour and its digital traces during epidemics.
+              - topic: Education
+                text: Cohort homophily and heterogeneity as drivers of student persistence in STEM.
+          - title: Explainable & responsible AI
+            items:
+              - topic: Explainable AI
+                text: Social interaction networks that reveal how swarm intelligence algorithms work.
+              - topic: Machine learning
+                text: Reinforcement learning for swarm intelligence and for hyperparameter optimisation.
+              - topic: Digital democracy
+                text: Online platforms, deployed in several countries, that collect preferences on policy proposals and measure political polarisation.
+              - topic: Human behaviour
+                text: Experiments across countries on perception, memory and behaviour.
+              - topic: Impact of AI
+                text: How people perceive and use AI tools.
         experience:
-          - when: since 2026
+          - when: Feb 2026 – present
             what: Assistant Professor of Computer Science & Engineering
             where: Constructor University, Bremen
-          - when: 2023 – 2026
+          - when: Nov 2023 – Feb 2026
             what: Assistant Professor in Data Science; Associate Director of Belonging (CoMENS faculties)
-            where: Northeastern University, London
-          - when: 2022 – 2023
+            where: Northeastern University London
+          - when: Jan 2022 – Nov 2023
             what: Postdoctoral Researcher, Center for Collective Learning
             where: ANITI, University of Toulouse
-          - when: 2019 – 2020
+          - when: May 2019 – Jul 2020
             what: Machine Learning Intern
             where: Nokia Bell Labs, Dublin
+          - when: 2018
+            what: Graduate Mentor (NSF-funded REU) & Graduate Student Assistant
+            where: Florida Institute of Technology
         education:
-          - what: PhD in Computer Science
-            where: University of Exeter
-          - what: MSc & BSc in Computer Engineering
-            where: University of Pernambuco
+          - when: 2018 – 2021
+            what: PhD in Computer Science
+            where: University of Exeter, UK (awarded 2022)
+          - when: 2018
+            what: PhD studies in Computer Science
+            where: Florida Institute of Technology, USA
+          - when: 2016 – 2017
+            what: MSc in Computer Engineering
+            where: University of Pernambuco, Brazil
+          - when: 2014 – 2015
+            what: Visiting international student
+            where: Pace University, New York (Brazil Scientific Mobility Program)
+          - when: 2010 – 2016
+            what: BSc in Computer Engineering
+            where: University of Pernambuco, Brazil
+        supervision:
+          - number: 1
+            label: PhD student
+            note: Data Science, Constructor University (current)
+          - number: 1
+            label: PhD co-supervised
+            note: University of Pernambuco, completed 2025 — 11 co-authored papers
+          - number: 31
+            label: MSc students
+            note: AI & Data Science, Northeastern University London
+          - number: 10
+            label: BSc students
+            note: Theses and research projects, incl. 2 NSF-funded REU students
+        teaching:
+          - where: Constructor University
+            courses:
+              - Software Development & Operation (2026, designed from scratch)
+              - Collaborative Software Development (2026, designed from scratch)
+              - "Data Warehousing: Concepts and Technologies (2026, designed from scratch)"
+              - Symbolic AI (2026)
+          - where: Northeastern University London
+            courses:
+              - Sustainable Cities & Communities (MSc, 2025, co-designed)
+              - Applied Machine Intelligence (MSc, 2023–2025)
+              - How to Develop a Project Proposal (MSc, 2024–2025)
+              - Programming for Data Science (MSc, 2024)
+              - Data Science Bootcamp (BSc, 2024–2025)
+              - Digital Fluency in the AI-Enabled Enterprise Bootcamp (BSc, 2024–2025)
+          - where: University of Toulouse
+            courses:
+              - Advanced Topics in Artificial Intelligence (MSc, 2023)
+              - Data Analytics bootcamp (MSc)
+              - Visual Basic for Applications (MSc Finance, 2023)
+          - where: Earlier teaching
+            courses:
+              - Object-Oriented Programming — University of Exeter (2021)
+              - Data Structures — Florida Institute of Technology (2018)
+              - Swarm Intelligence — University of Pernambuco (2016)
         service:
           - Associate Editor, Applied Network Science
-          - Board Member, Network Science Society & Complex Systems Society
-          - Network Science Representative, Women in Network Science
+          - Guest Editor, Applied Network Science special issues — “Networks for Everyday Life” (2026), “Network Approaches to Urban Inequality” (2025), “Networked Inequality” (2022)
+          - Board Member, Network Science Society & Complex Systems Society (since 2025)
+          - Executive Committee & Network Science Representative, Women in Network Science
+          - Deputy Chair, Open Arms – Science without frontiers
+          - Program Chair, CompleNet 2024 & 2025 (organising committee since 2020)
+          - Satellite Chair, CCS 2024; organiser of the Equality & Fairness satellite at CCS 2023
+          - Workshop organiser, IJCAI 2026
+          - Reviewer for journals (e.g. Nature, EAAI) and conferences (e.g. NetSci, IUI, CCS)
+          - External examiner for MSc defences in Brazil and the UK
+        talks:
+          - when: 2026
+            what: Keynote speaker, GlobalSouthAI workshop at IJCAI 2026
+          - when: 2026
+            what: Interviewed by Deutschlandfunk (Systemfragen) on the parenthood effect in urban mobility — also featured by Phys.org and Constructor University News
+          - when: 2026
+            what: "Speaker, Gendering Science: a joint workshop for science of science and gender studies"
+          - when: 2026
+            what: "GYA on Campus: Experience the Future of Artificial Intelligence"
+        awards:
+          - when: 2021
+            what: Second best presentation, CompleNet
+          - when: 2020
+            what: Best presentation, EMPS Conference, University of Exeter
+          - when: 2019
+            what: Outstanding Intern, Nokia Bell Labs
+          - when: 2018
+            what: Fully funded PhD scholarship, University of Exeter
+          - when: 2016
+            what: Best project, XV University Week, University of Pernambuco
+          - when: 2014
+            what: Brazil Scientific Mobility Program scholarship (one year at Pace University, New York)
+        languages: Portuguese (native) · English (fluent) · Spanish, French & German (learning)
+        # Shown only if OpenAlex can't be reached (and to search engines):
         publications:
+          - title: The parenthood effect in urban mobility
+            authors: Mariana Macedo, Ronaldo Menezes, Alessio Cardillo
+            venue: npj Complexity
+            year: 2026
+            url: https://doi.org/10.1038/s44260-026-00089-9
+          - title: Cultural proximity reveals a local premium in collective memory
+            authors: Mariana Macedo, Martina Oyarzun, Cristian Candia, César A. Hidalgo
+            venue: PNAS Nexus
+            year: 2026
+            url: https://doi.org/10.1093/pnasnexus/pgag308
           - title: "Gender biases in online communication: A case study of soccer"
             authors: Mariana Macedo, Akrati Saxena
             venue: Applied Intelligence

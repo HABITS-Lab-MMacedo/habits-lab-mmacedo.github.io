@@ -10,7 +10,7 @@ intro: Researchers and students working together on human behaviour, networks an
 {% for group in site.data.people.groups %}
   <h2 class="group-title">{{ group.title }}</h2>
   <ul class="people">
-    {% for person in group.members %}{% include person-card.html person=person %}{% endfor %}
+    {% for person in group.members %}{% include person-card.html person=person show_more=true %}{% endfor %}
   </ul>
 {% endfor %}
 

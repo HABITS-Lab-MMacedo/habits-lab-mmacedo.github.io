@@ -8,6 +8,18 @@ intro: Papers, preprints and theses from the lab. Lab members are highlighted.
 scripts:
   - /assets/js/publications.js
 ---
+{% for group in site.data.people.groups %}{% for m in group.members %}{% if m.openalex %}{% assign pi = m %}{% endif %}{% endfor %}{% endfor %}
+{% if pi %}{% for l in pi.links %}{% if l.label == "Google Scholar" %}{% assign scholar = l.url %}{% endif %}{% endfor %}{% endif %}
+{% if scholar %}
+<aside class="scholar-note">
+  <svg class="scholar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 9 12 15l8.5-4.86V17h2V9z"/><path d="M5.5 12.6v3.9c0 1.9 2.9 3.5 6.5 3.5s6.5-1.6 6.5-3.5v-3.9L12 16.3z"/></svg>
+  <p>For the complete, always up-to-date list of {{ pi.name }}'s papers, see the
+    <a href="{{ scholar }}" target="_blank" rel="noopener">Google Scholar profile ↗</a>
+    or the <a href="{{ pi.link | relative_url }}#publications">live list on the PI page</a>.</p>
+  <a class="btn btn--small" href="{{ scholar }}" target="_blank" rel="noopener">Google Scholar ↗</a>
+</aside>
+{% endif %}
+
 <div class="toolbar">
   <label class="search">
     <span class="visually-hidden">Search publications</span>

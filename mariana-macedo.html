@@ -5,6 +5,8 @@ slug: pi
 permalink: /people/mariana-macedo/
 parent: /people/
 person: Mariana Macedo   # must match the name in _data/people.yml — all content comes from there
+scripts:
+  - /assets/js/pi-publications.js
 description: Mariana Macedo, Principal Investigator of the HABITS Lab and Assistant Professor of Computer Science & Engineering at Constructor University.
 ---
 {% for group in site.data.people.groups %}{% for m in group.members %}{% if m.name == page.person %}{% assign p = m %}{% endif %}{% endfor %}{% endfor %}
@@ -17,7 +19,7 @@ description: Mariana Macedo, Principal Investigator of the HABITS Lab and Assist
       <h1>{% if p.title %}<span class="pi-honorific">{{ p.title }}</span>{% endif %}{{ p.name }}</h1>
       {% if p.role %}<p class="pi-role">{{ p.role }}</p>{% endif %}
       <p class="pi-org">Principal Investigator, {{ site.title }} · <a href="{{ site.institution.url }}">{{ site.institution.name }}</a></p>
-      {% if p.bio %}<p class="pi-bio">{{ p.bio }}</p>{% endif %}
+      {% if p.bio %}<div class="pi-bio">{{ p.bio | markdownify }}</div>{% endif %}
 
       {% if p.links %}
       <p class="pi-links">
@@ -30,6 +32,7 @@ description: Mariana Macedo, Principal Investigator of the HABITS Lab and Assist
         {% if p.email %}<div><dt>Email</dt><dd><a href="mailto:{{ p.email }}">{{ p.email }}</a></dd></div>{% endif %}
         {% if p.office %}<div><dt>Office</dt><dd>{{ p.office }}</dd></div>{% endif %}
         {% if site.institution.address %}<div><dt>Address</dt><dd>{{ site.institution.address }}</dd></div>{% endif %}
+        {% if p.languages %}<div><dt>Languages</dt><dd>{{ p.languages }}</dd></div>{% endif %}
       </dl>
       {% endif %}
     </div>
@@ -49,15 +52,37 @@ description: Mariana Macedo, Principal Investigator of the HABITS Lab and Assist
 </section>
 </div>
 
+<nav class="pi-jump" aria-label="On this page">
+  <div class="wrap">
+    <ul>
+      {% if p.research %}<li><a href="#research">Research</a></li>{% endif %}
+      {% if p.experience %}<li><a href="#experience">Experience</a></li>{% endif %}
+      {% if p.supervision or p.teaching %}<li><a href="#teaching">Teaching &amp; supervision</a></li>{% endif %}
+      {% if p.service %}<li><a href="#service">Service</a></li>{% endif %}
+      {% if p.talks or p.awards %}<li><a href="#recognition">Talks &amp; awards</a></li>{% endif %}
+      <li><a href="#publications">Publications</a></li>
+    </ul>
+  </div>
+</nav>
+
 <div class="wrap pi-body">
-  {% if p.interests %}
-  <section class="pi-section">
-    <h2>Research interests</h2>
-    <ul class="pi-interests">{% for i in p.interests %}<li>{{ i }}</li>{% endfor %}</ul>
+  {% if p.research %}
+  <section class="pi-section" id="research">
+    <h2>Research</h2>
+    <div class="pi-research">
+      {% for r in p.research %}
+      <div class="pi-research-group">
+        <h3>{{ r.title }}</h3>
+        <ul>
+          {% for i in r.items %}<li><span class="tag tag--topic">{{ i.topic }}</span><p>{{ i.text }}</p></li>{% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
   </section>
   {% endif %}
 
-  <div class="pi-section pi-cols">
+  <div class="pi-section pi-cols" id="experience">
     {% if p.experience %}
     <section>
       <h2>Experience</h2>
@@ -68,40 +93,103 @@ description: Mariana Macedo, Principal Investigator of the HABITS Lab and Assist
       </ol>
     </section>
     {% endif %}
-    <div>
-      {% if p.education %}
-      <section>
-        <h2>Education</h2>
-        <ul class="profile-list">
-          {% for e in p.education %}<li><strong>{{ e.what }}</strong>{% if e.where %}<span>{{ e.where }}</span>{% endif %}</li>{% endfor %}
-        </ul>
-      </section>
-      {% endif %}
-      {% if p.service %}
-      <section>
-        <h2>Service</h2>
-        <ul class="profile-list">{% for s in p.service %}<li>{{ s }}</li>{% endfor %}</ul>
-      </section>
-      {% endif %}
-    </div>
+    {% if p.education %}
+    <section>
+      <h2>Education</h2>
+      <ol class="timeline timeline--muted">
+        {% for e in p.education %}
+        <li>{% if e.when %}<span class="timeline-when">{{ e.when }}</span>{% endif %}<span class="timeline-what">{{ e.what }}</span>{% if e.where %}<span class="timeline-where">{{ e.where }}</span>{% endif %}</li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
   </div>
 
-  {% if p.publications %}
-  <section class="pi-section pi-pubs">
-    <h2>Selected publications</h2>
-    {% capture me %}<mark>{{ p.name }}</mark>{% endcapture %}
-    <ul class="pubs">
-      {% for pub in p.publications %}
-      <li class="pub">
-        <p class="pub-title">{% if pub.url %}<a href="{{ pub.url }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</p>
-        <p class="pub-authors">{{ pub.authors | replace: p.name, me }}</p>
-        <p class="pub-meta"><em>{{ pub.venue }}</em>{% if pub.year %} · {{ pub.year }}{% endif %}</p>
-      </li>
+  {% if p.supervision or p.teaching %}
+  <section class="pi-section" id="teaching">
+    <h2>Teaching &amp; supervision</h2>
+    {% if p.supervision %}
+    <ul class="pi-stats">
+      {% for st in p.supervision %}
+      <li><span class="pi-stat-num">{{ st.number }}</span><span class="pi-stat-label">{{ st.label }}</span><span class="pi-stat-note">{{ st.note }}</span></li>
       {% endfor %}
     </ul>
-    <p class="back-link"><a class="more" href="{{ '/publications/' | relative_url }}">All lab publications →</a></p>
+    {% endif %}
+    {% if p.teaching %}
+    <div class="pi-courses">
+      {% for t in p.teaching %}
+      <div class="pi-course-card">
+        <h3>{{ t.where }}</h3>
+        <ul class="profile-list">{% for c in t.courses %}<li>{{ c }}</li>{% endfor %}</ul>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
   </section>
   {% endif %}
+
+  {% if p.service %}
+  <section class="pi-section" id="service">
+    <h2>Service &amp; leadership</h2>
+    <ul class="profile-list pi-service">{% for s in p.service %}<li>{{ s }}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  {% if p.talks or p.awards %}
+  <div class="pi-section pi-cols" id="recognition">
+    {% if p.talks %}
+    <section>
+      <h2>Talks &amp; media</h2>
+      <ul class="pi-dated">{% for t in p.talks %}<li><span>{{ t.when }}</span><p>{{ t.what }}</p></li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+    {% if p.awards %}
+    <section>
+      <h2>Awards</h2>
+      <ul class="pi-dated">{% for a in p.awards %}<li><span>{{ a.when }}</span><p>{{ a.what }}</p></li>{% endfor %}</ul>
+    </section>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <section class="pi-section pi-pubs" id="publications">
+    <h2>Publications</h2>
+    <div class="toolbar" id="pi-pub-tools" hidden>
+      <label class="search">
+        <span class="visually-hidden">Search publications</span>
+        <input type="search" id="pi-pub-search" placeholder="Search title, co-author or venue…" autocomplete="off">
+      </label>
+      <div class="chips" role="group" aria-label="Filter by type" id="pi-pub-chips"></div>
+    </div>
+    <p class="pub-source" id="pi-pub-status" aria-live="polite">
+      {% if p.openalex %}Loading the full list…{% endif %}
+    </p>
+
+    <div id="pi-pub-list"
+         data-openalex="{{ p.openalex }}"
+         data-name="{{ p.name | escape }}">
+      {% if p.publications %}
+      {% capture me %}<mark>{{ p.name }}</mark>{% endcapture %}
+      <ul class="pubs">
+        {% for pub in p.publications %}
+        <li class="pub">
+          <p class="pub-title">{% if pub.url %}<a href="{{ pub.url }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</p>
+          <p class="pub-authors">{{ pub.authors | replace: p.name, me }}</p>
+          <p class="pub-meta"><em>{{ pub.venue }}</em>{% if pub.year %} · {{ pub.year }}{% endif %}</p>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <p class="empty" id="pi-pub-empty" hidden>No publications match your search.</p>
+    <p class="pub-more-wrap"><button class="btn" type="button" id="pi-pub-more" hidden></button></p>
+
+    <p class="pub-source pub-source--foot">
+      {% for l in p.links %}{% if l.label == "Google Scholar" %}<a href="{{ l.url }}" target="_blank" rel="noopener">Google Scholar profile ↗</a> · {% endif %}{% endfor %}
+      {% if p.orcid %}<a href="https://orcid.org/{{ p.orcid }}" target="_blank" rel="noopener">ORCID ↗</a> · {% endif %}
+      <a href="{{ '/publications/' | relative_url }}">All lab publications →</a>
+    </p>
+  </section>
 
   <div class="cta">
     <div>
