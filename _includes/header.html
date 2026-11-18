@@ -17,7 +17,7 @@
         {% for item in site.navigation %}
           {% assign active = false %}
           {% if page.url == item.url %}{% assign active = true %}{% endif %}
-          {% if item.url == "/research/" and page.slug == "posters" %}{% assign active = true %}{% endif %}
+          {% if page.parent == item.url %}{% assign active = true %}{% endif %}
           {% if item.url == "/news/" and page.layout == "post" %}{% assign active = true %}{% endif %}
           <li><a href="{{ item.url | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
         {% endfor %}

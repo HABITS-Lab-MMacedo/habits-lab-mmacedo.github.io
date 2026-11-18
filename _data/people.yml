@@ -19,11 +19,99 @@ groups:
   - title: Principal Investigator
     members:
       - name: Mariana Macedo
+        title: Prof. Dr.
         role: Assistant Professor of Computer Science & Engineering
         topic: network science, complex systems, human behaviour
-        photo: /assets/img/people/example.png
-        gif: /assets/img/people/example.gif
-        link: https://marianagmmacedo.github.io/
+        photo: /assets/img/people/example.png   # TODO: real photo
+        gif: /assets/img/people/example.gif     # TODO: real GIF
+        link: /people/mariana-macedo/
+        # --- Everything below is shown on the PI's own page
+        #     (mariana-macedo.html → /people/mariana-macedo/) ---
+        bio: >-
+          Mariana leads the HABITS Lab at Constructor University's School of
+          Computer Science & Engineering. Her research combines data science,
+          network science and AI to understand how social, historical and
+          structural factors shape unequal access to opportunities — from
+          mobility and careers to resources, health and fairness. She also
+          studies AI systems themselves, modelling how agents interact in order
+          to make AI more transparent, accountable, fair and trustworthy.
+        interests:
+          - Applied AI & human–AI interfaces
+          - Human dynamics
+          - Gender, race & socioeconomic inequalities
+          - Complex & urban systems
+          - Swarm intelligence & evolutionary computation
+        email: mmacedo@constructor.university
+        office: Research I, Room 86
+        links:
+          - label: Personal website
+            url: https://marianagmmacedo.github.io/
+          - label: Google Scholar
+            url: https://scholar.google.com/citations?hl=en&user=1tGv4IIAAAAJ
+          - label: LinkedIn
+            url: https://www.linkedin.com/in/mariana-macedo-136b06b0/
+          - label: CV (PDF)
+            url: https://constructor.university/sites/default/files/2026-02/MarianaMacedo_CV_2026-2.pdf
+          - label: University profile
+            url: https://constructor.university/faculty-member/mariana-macedo
+        experience:
+          - when: since 2026
+            what: Assistant Professor of Computer Science & Engineering
+            where: Constructor University, Bremen
+          - when: 2023 – 2026
+            what: Assistant Professor in Data Science; Associate Director of Belonging (CoMENS faculties)
+            where: Northeastern University, London
+          - when: 2022 – 2023
+            what: Postdoctoral Researcher, Center for Collective Learning
+            where: ANITI, University of Toulouse
+          - when: 2019 – 2020
+            what: Machine Learning Intern
+            where: Nokia Bell Labs, Dublin
+        education:
+          - what: PhD in Computer Science
+            where: University of Exeter
+          - what: MSc & BSc in Computer Engineering
+            where: University of Pernambuco
+        service:
+          - Associate Editor, Applied Network Science
+          - Board Member, Network Science Society & Complex Systems Society
+          - Network Science Representative, Women in Network Science
+        publications:
+          - title: "Gender biases in online communication: A case study of soccer"
+            authors: Mariana Macedo, Akrati Saxena
+            venue: Applied Intelligence
+            year: 2026
+            url: https://link.springer.com/article/10.1007/s10489-025-06988-z
+          - title: Understanding political divisiveness using online participation data from the 2022 French and Brazilian presidential elections
+            authors: Carlos Navarrete, Mariana Macedo, Rachael Colley, Jingling Zhang, Nicole Ferrada, Maria Eduarda Mello, Rodrigo Lira, et al.
+            venue: Nature Human Behaviour
+            year: 2024
+            url: https://www.nature.com/articles/s41562-023-01755-x
+          - title: "Academic mobility as a driver of productivity: a gender-centric approach"
+            authors: Mariana Macedo, Ana Maria Jaramillo, Ronaldo Menezes
+            venue: International Workshop on Complex Networks (CompleNet)
+            year: 2023
+            url: https://link.springer.com/chapter/10.1007/978-3-031-28276-8_11
+          - title: Applying reinforcement learning to combine multiple swarm-based algorithms
+            authors: Rodrigo Cesar Lira, Mariana Macedo, Hugo Valadares Siqueira, Carmelo Bastos-Filho
+            venue: IEEE LA-CCI
+            year: 2023
+            url: https://ieeexplore.ieee.org/abstract/document/10409350
+          - title: "Differences in the spatial landscape of urban mobility: gender and socioeconomic perspectives"
+            authors: Mariana Macedo, Laura Lotero, Alessio Cardillo, Ronaldo Menezes, Hugo Barbosa
+            venue: PLoS ONE
+            year: 2022
+            url: https://doi.org/10.1371/journal.pone.0260874
+          - title: "Breast cancer diagnosis using thermal image analysis: A data-driven approach based on swarm intelligence and supervised learning for optimized feature selection"
+            authors: Mariana Macedo, Maira Santana, Wellington P. dos Santos, Ronaldo Menezes, Carmelo Bastos-Filho
+            venue: Applied Soft Computing
+            year: 2021
+            url: https://doi.org/10.1016/j.asoc.2021.107533
+          - title: Uncovering the social interaction network in swarm intelligence algorithms
+            authors: Marcos Oliveira, Diego Pinheiro, Mariana Macedo, Carmelo Bastos-Filho, Ronaldo Menezes
+            venue: Applied Network Science
+            year: 2020
+            url: https://link.springer.com/article/10.1007/s41109-020-00260-8
 
   - title: PhD Students
     members:

@@ -81,6 +81,7 @@ The site is then live at **https://habits-lab-mmacedo.github.io**.
 |---|---|
 | Lab name, description, contact email, social links, menu | `_config.yml` |
 | People (photos and GIFs) | `_data/people.yml` + images in `assets/img/people/` |
+| PI page (bio, experience, selected papers) | the PI's entry in `_data/people.yml` (page layout in `mariana-macedo.html`) |
 | Research themes | `_data/research.yml` |
 | Publications | `_data/publications.yml` |
 | Posters | `_data/posters.yml` + previews in `assets/img/posters/` (PDFs live on Google Drive) |

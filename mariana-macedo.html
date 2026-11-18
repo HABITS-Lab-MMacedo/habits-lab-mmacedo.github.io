@@ -1,0 +1,113 @@
+---
+layout: default
+title: Mariana Macedo
+slug: pi
+permalink: /people/mariana-macedo/
+parent: /people/
+person: Mariana Macedo   # must match the name in _data/people.yml — all content comes from there
+description: Mariana Macedo, Principal Investigator of the HABITS Lab and Assistant Professor of Computer Science & Engineering at Constructor University.
+---
+{% for group in site.data.people.groups %}{% for m in group.members %}{% if m.name == page.person %}{% assign p = m %}{% endif %}{% endfor %}{% endfor %}
+
+<div data-gif-mode="{{ site.people_gif_mode | default: 'hover' }}">
+<section class="pi-hero">
+  <div class="wrap pi-hero-inner">
+    <div>
+      <p class="kicker"><a href="{{ '/people/' | relative_url }}">People</a> / Principal Investigator</p>
+      <h1>{% if p.title %}<span class="pi-honorific">{{ p.title }}</span>{% endif %}{{ p.name }}</h1>
+      {% if p.role %}<p class="pi-role">{{ p.role }}</p>{% endif %}
+      <p class="pi-org">Principal Investigator, {{ site.title }} · <a href="{{ site.institution.url }}">{{ site.institution.name }}</a></p>
+      {% if p.bio %}<p class="pi-bio">{{ p.bio }}</p>{% endif %}
+
+      {% if p.links %}
+      <p class="pi-links">
+        {% for l in p.links %}<a class="btn btn--small{% if forloop.first %} btn--primary{% endif %}" href="{{ l.url }}" target="_blank" rel="noopener">{{ l.label }}</a>{% endfor %}
+      </p>
+      {% endif %}
+
+      {% if p.email or p.office %}
+      <dl class="pi-contact">
+        {% if p.email %}<div><dt>Email</dt><dd><a href="mailto:{{ p.email }}">{{ p.email }}</a></dd></div>{% endif %}
+        {% if p.office %}<div><dt>Office</dt><dd>{{ p.office }}</dd></div>{% endif %}
+        {% if site.institution.address %}<div><dt>Address</dt><dd>{{ site.institution.address }}</dd></div>{% endif %}
+      </dl>
+      {% endif %}
+    </div>
+
+    <div class="pi-photo person">
+      <div class="person-photo{% if p.gif and p.gif != '' %} has-gif{% endif %}">
+        {% if p.photo and p.photo != "" %}
+          <img src="{{ p.photo | relative_url }}" alt="Photo of {{ p.name }}" width="600" height="600"
+               data-static="{{ p.photo | relative_url }}"{% if p.gif and p.gif != "" %} data-gif="{{ p.gif | relative_url }}"{% endif %}>
+        {% else %}
+          {% assign parts = p.name | split: " " %}
+          <span class="person-initials" aria-hidden="true">{{ parts | first | slice: 0 }}{{ parts | last | slice: 0 }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="wrap pi-body">
+  {% if p.interests %}
+  <section class="pi-section">
+    <h2>Research interests</h2>
+    <ul class="pi-interests">{% for i in p.interests %}<li>{{ i }}</li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  <div class="pi-section pi-cols">
+    {% if p.experience %}
+    <section>
+      <h2>Experience</h2>
+      <ol class="timeline">
+        {% for e in p.experience %}
+        <li><span class="timeline-when">{{ e.when }}</span><span class="timeline-what">{{ e.what }}</span>{% if e.where %}<span class="timeline-where">{{ e.where }}</span>{% endif %}</li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+    <div>
+      {% if p.education %}
+      <section>
+        <h2>Education</h2>
+        <ul class="profile-list">
+          {% for e in p.education %}<li><strong>{{ e.what }}</strong>{% if e.where %}<span>{{ e.where }}</span>{% endif %}</li>{% endfor %}
+        </ul>
+      </section>
+      {% endif %}
+      {% if p.service %}
+      <section>
+        <h2>Service</h2>
+        <ul class="profile-list">{% for s in p.service %}<li>{{ s }}</li>{% endfor %}</ul>
+      </section>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if p.publications %}
+  <section class="pi-section pi-pubs">
+    <h2>Selected publications</h2>
+    {% capture me %}<mark>{{ p.name }}</mark>{% endcapture %}
+    <ul class="pubs">
+      {% for pub in p.publications %}
+      <li class="pub">
+        <p class="pub-title">{% if pub.url %}<a href="{{ pub.url }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</p>
+        <p class="pub-authors">{{ pub.authors | replace: p.name, me }}</p>
+        <p class="pub-meta"><em>{{ pub.venue }}</em>{% if pub.year %} · {{ pub.year }}{% endif %}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    <p class="back-link"><a class="more" href="{{ '/publications/' | relative_url }}">All lab publications →</a></p>
+  </section>
+  {% endif %}
+
+  <div class="cta">
+    <div>
+      <h2>Work with me</h2>
+      <p>I'm looking for motivated students and collaborators interested in networks, data and human behaviour.</p>
+    </div>
+    <a class="btn btn--primary" href="{{ '/join/' | relative_url }}">Join the lab →</a>
+  </div>
+</div>
