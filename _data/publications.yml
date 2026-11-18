@@ -1,34 +1,27 @@
 # ------------------------------------------------------------------
-# PUBLICATIONS — newest first is not required; the page sorts by year.
+# PUBLICATIONS ADDED BY HAND
 #
+# Most papers come in automatically: a weekly GitHub Action fetches the
+# PI's Google Scholar profile (or OpenAlex) into _data/auto_publications.json
+# — don't edit that file, it is overwritten.
+#
+# Add papers here only if they are NOT on that profile (e.g. a student's
+# paper without the PI). Fields:
 #   title    (required)
 #   authors  write lab members exactly as in people.yml to highlight them
 #   venue    journal or conference
 #   year     (required)
-#   type     journal | conference | preprint | workshop | thesis
-#   pdf / doi / code / data   optional links
+#   type     journal | conference | preprint | book | data
+#   url / doi / pdf / code / data   optional links
 #   selected true -> also shown on the Home page
 #
-# The two entries below are EXAMPLES — replace them with real papers.
+# Example:
+# - title: "Paper title"
+#   authors: "Student Name, Mariana Macedo"
+#   venue: "Applied Network Science"
+#   year: 2026
+#   type: journal
+#   doi: "10.1007/..."
+#   selected: true
 # ------------------------------------------------------------------
-
-- title: "Example paper title — replace with a real publication"
-  authors: "Sthefanie Monica Premebida, Mariana Macedo"
-  venue: "Applied Network Science"
-  year: 2026
-  type: journal
-  doi: ""
-  pdf: ""
-  code: ""
-  selected: true
-
-- title: "Another example: a conference paper with code and data"
-  authors: "Mariana Macedo, Co-Author Name"
-  venue: "International Conference on Computational Social Science (IC2S2)"
-  year: 2025
-  type: conference
-  doi: ""
-  pdf: ""
-  code: "https://github.com/HABITS-Lab-MMacedo"
-  data: ""
-  selected: true
+[]

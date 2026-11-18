@@ -151,25 +151,21 @@ and the four most recent ones on the home page.
 
 ## Adding a publication
 
-Add an entry to `_data/publications.yml`:
+**Most papers appear automatically.** Every Monday a GitHub Action
+(`.github/workflows/update-publications.yml`) fetches the PI's publications into
+`_data/auto_publications.json`, and the Publications page lists them. To refresh
+right away: GitHub → **Actions** → **Update publications** → **Run workflow**.
 
-```yaml
-- title: "Title of the paper"
-  authors: "First Author, Mariana Macedo, Another Author"
-  venue: "Applied Network Science"
-  year: 2026
-  type: journal          # journal | conference | preprint | workshop | thesis
-  doi: "10.1007/xxxxx"   # optional
-  pdf: ""                # optional: link, or a file in assets/papers/
-  code: ""               # optional
-  data: ""               # optional
-  selected: true         # true = also show on the home page
-```
+- **Source = Google Scholar** when the repository has a `SERPAPI_KEY` secret.
+  Google Scholar has no official API, so this goes through
+  [SerpApi](https://serpapi.com/google-scholar-author-api): create an account,
+  copy the API key, then on GitHub open **Settings → Secrets and variables →
+  Actions → New repository secret**, name it `SERPAPI_KEY` and paste the key.
+- **Source = OpenAlex** (free, no key) when that secret is missing.
 
-Authors written exactly as in `people.yml` are highlighted automatically.
-The two entries currently in the file are examples and should be replaced.
-
----
+Papers that are *not* on the PI's profile (e.g. a student's paper without the PI)
+can be added by hand to `_data/publications.yml` — the file explains the fields.
+Authors written as in `people.yml` (or as initials, e.g. "M Macedo") are highlighted.
 
 ## Adding a poster
 
@@ -254,6 +250,6 @@ Open <http://localhost:4000>. Changes to files reload automatically (except
 - [ ] Official meaning of the acronym HABITS and final tagline (`_config.yml`)
 - [ ] Official lab / university contact email (`_config.yml`)
 - [ ] Real members, photos and GIFs (`_data/people.yml`) — current entries are examples
-- [ ] Real publications (`_data/publications.yml`) — current entries are examples
+- [ ] Add the `SERPAPI_KEY` secret so publications come from Google Scholar
 - [ ] Review the research theme texts with the PI (`_data/research.yml`)
 - [ ] Add venue and year to each poster (`_data/posters.yml`)

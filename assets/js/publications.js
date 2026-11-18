@@ -8,7 +8,17 @@
   var members = (wrap.dataset.members || '').split('|').map(function (s) { return s.trim(); }).filter(Boolean);
   wrap.querySelectorAll('.pub-authors').forEach(function (el) {
     var html = el.innerHTML;
+    var variants = [];
     members.forEach(function (name) {
+      variants.push(name);
+      var parts = name.split(/\s+/);
+      if (parts.length > 1) {
+        var last = parts[parts.length - 1];
+        variants.push(parts[0][0] + ' ' + last, parts[0][0] + '. ' + last,
+                      parts.slice(0, -1).map(function (p) { return p[0]; }).join('') + ' ' + last);
+      }
+    });
+    variants.forEach(function (name) {
       var safe = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       html = html.replace(new RegExp('(^|,\\s*|and\\s+)(' + safe + ')(?=\\s*(,|$|and))', 'g'), '$1<mark>$2</mark>');
     });

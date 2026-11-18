@@ -408,12 +408,6 @@ a.person-link:hover .person-name { color: var(--accent); }
 .pub-links { display: flex; gap: 14px; margin-top: 8px !important; font-size: .88rem; font-weight: 600; }
 .pub-links a { text-decoration: none; }
 .pub-links a:hover { text-decoration: underline; }
-.scholar-note {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin: 0 0 28px; padding: 16px 20px;
-  background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 12px;
-}
-.scholar-note p { flex: 1 1 280px; margin: 0; font-size: .95rem; color: var(--ink-soft); }
-.scholar-icon { width: 28px; height: 28px; fill: var(--accent); flex-shrink: 0; }
 .pub-year h2 { font-family: var(--font-mono); font-size: .95rem; color: var(--ink-faint); letter-spacing: .06em; margin: 36px 0 4px; }
 .pub-year:first-child h2 { margin-top: 0; }
 .pubs--compact .pub-title { font-size: 1.05rem; }

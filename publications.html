@@ -8,38 +8,36 @@ intro: Papers, preprints and theses from the lab. Lab members are highlighted.
 scripts:
   - /assets/js/publications.js
 ---
-{% for group in site.data.people.groups %}{% for m in group.members %}{% if m.openalex %}{% assign pi = m %}{% endif %}{% endfor %}{% endfor %}
-{% if pi %}{% for l in pi.links %}{% if l.label == "Google Scholar" %}{% assign scholar = l.url %}{% endif %}{% endfor %}{% endif %}
-{% if scholar %}
-<aside class="scholar-note">
-  <svg class="scholar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 1.5 9 12 15l8.5-4.86V17h2V9z"/><path d="M5.5 12.6v3.9c0 1.9 2.9 3.5 6.5 3.5s6.5-1.6 6.5-3.5v-3.9L12 16.3z"/></svg>
-  <p>For the complete, always up-to-date list of {{ pi.name }}'s papers, see the
-    <a href="{{ scholar }}" target="_blank" rel="noopener">Google Scholar profile ↗</a>
-    or the <a href="{{ pi.link | relative_url }}#publications">live list on the PI page</a>.</p>
-  <a class="btn btn--small" href="{{ scholar }}" target="_blank" rel="noopener">Google Scholar ↗</a>
-</aside>
-{% endif %}
+{% assign auto = site.data.auto_publications %}
+{% assign pubs = site.data.publications %}
+{% if auto and auto.items %}{% assign pubs = pubs | concat: auto.items %}{% endif %}
 
+{% assign type_order = "journal,conference,preprint,book,data" | split: "," %}
+{% assign type_label = "Journal,Conference,Preprint,Book,Data" | split: "," %}
 <div class="toolbar">
   <label class="search">
     <span class="visually-hidden">Search publications</span>
     <input type="search" id="pub-search" placeholder="Search title, author or venue…" autocomplete="off">
   </label>
   <div class="chips" role="group" aria-label="Filter by type">
-    <button class="chip" type="button" data-type="all" aria-pressed="true">All</button>
-    <button class="chip" type="button" data-type="journal" aria-pressed="false">Journal</button>
-    <button class="chip" type="button" data-type="conference" aria-pressed="false">Conference</button>
-    <button class="chip" type="button" data-type="preprint" aria-pressed="false">Preprint</button>
+    <button class="chip" type="button" data-type="all" aria-pressed="true">All <span class="chip-count">{{ pubs.size }}</span></button>
+    {% for t in type_order %}{% assign n = pubs | where: "type", t | size %}{% if n > 0 %}
+    <button class="chip" type="button" data-type="{{ t }}" aria-pressed="false">{{ type_label[forloop.index0] }} <span class="chip-count">{{ n }}</span></button>
+    {% endif %}{% endfor %}
   </div>
 </div>
+
+{% if auto and auto.updated %}
+<p class="pub-source">{{ auto.items.size }} publications from the PI's <a href="{{ auto.profile }}" target="_blank" rel="noopener">{{ auto.source }} profile</a>, updated automatically every week · last update {{ auto.updated | date: "%-d %B %Y" }}</p>
+{% endif %}
 
 {% assign members = "" %}
 {% for group in site.data.people.groups %}{% for m in group.members %}{% assign members = members | append: m.name | append: "|" %}{% endfor %}{% endfor %}
 <div id="pub-list" data-members="{{ members | escape }}">
-{% assign by_year = site.data.publications | group_by: "year" | sort: "name" | reverse %}
+{% assign by_year = pubs | group_by: "year" | sort: "name" | reverse %}
 {% for year in by_year %}
   <section class="pub-year" data-year="{{ year.name }}">
-    <h2>{{ year.name }}</h2>
+    <h2>{{ year.name | default: "Undated" }}</h2>
     <ul class="pubs">
       {% for pub in year.items %}{% include publication.html pub=pub %}{% endfor %}
     </ul>

@@ -1,10 +1,12 @@
 {% assign pub = include.pub %}
+{% if pub.doi and pub.doi != "" %}{% if pub.doi contains 'http' %}{% assign href = pub.doi %}{% else %}{% assign href = pub.doi | prepend: "https://doi.org/" %}{% endif %}{% elsif pub.url and pub.url != "" %}{% assign href = pub.url %}{% else %}{% assign href = nil %}{% endif %}
 <li class="pub" data-year="{{ pub.year }}" data-type="{{ pub.type }}">
-  <p class="pub-title">{% if pub.doi and pub.doi != "" %}<a href="{% if pub.doi contains 'http' %}{{ pub.doi }}{% else %}https://doi.org/{{ pub.doi }}{% endif %}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</p>
-  <p class="pub-authors">{{ pub.authors }}</p>
-  <p class="pub-meta"><em>{{ pub.venue }}</em>{% if include.show_year %} · {{ pub.year }}{% endif %}
+  <p class="pub-title">{% if href %}<a href="{{ href }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</p>
+  {% if pub.authors and pub.authors != "" %}<p class="pub-authors">{{ pub.authors }}</p>{% endif %}
+  <p class="pub-meta">{% if pub.venue and pub.venue != "" %}<em>{{ pub.venue }}</em>{% endif %}{% if include.show_year %} · {{ pub.year }}{% endif %}
     {% if pub.type %}<span class="tag tag--{{ pub.type }}">{{ pub.type }}</span>{% endif %}
+    {% if pub.citations and pub.citations > 0 %}<span class="pub-cites">{{ pub.citations }} citation{% if pub.citations != 1 %}s{% endif %}</span>{% endif %}
   </p>
-  {% capture links %}{% if pub.pdf and pub.pdf != "" %}<a href="{{ pub.pdf | relative_url }}">PDF</a>{% endif %}{% if pub.code and pub.code != "" %}<a href="{{ pub.code }}">Code</a>{% endif %}{% if pub.data and pub.data != "" %}<a href="{{ pub.data }}">Data</a>{% endif %}{% if pub.doi and pub.doi != "" %}<a href="{% if pub.doi contains 'http' %}{{ pub.doi }}{% else %}https://doi.org/{{ pub.doi }}{% endif %}">DOI</a>{% endif %}{% endcapture %}
+  {% capture links %}{% if pub.pdf and pub.pdf != "" %}<a href="{{ pub.pdf | relative_url }}">PDF</a>{% endif %}{% if pub.code and pub.code != "" %}<a href="{{ pub.code }}">Code</a>{% endif %}{% if pub.data and pub.data != "" %}<a href="{{ pub.data }}">Data</a>{% endif %}{% if pub.doi and pub.doi != "" %}<a href="{{ href }}">DOI</a>{% endif %}{% endcapture %}
   {% if links != "" %}<p class="pub-links">{{ links }}</p>{% endif %}
 </li>

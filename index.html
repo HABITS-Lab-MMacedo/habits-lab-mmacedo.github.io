@@ -50,10 +50,11 @@ slug: home
     </div>
     <div>
       <div class="section-head">
-        <h2>Selected publications</h2>
+        <h2>Recent publications</h2>
         <a class="more" href="{{ '/publications/' | relative_url }}">All →</a>
       </div>
       {% assign selected = site.data.publications | where: "selected", true | sort: "year" | reverse %}
+      {% if selected.size == 0 and site.data.auto_publications %}{% assign selected = site.data.auto_publications.items | where: "type", "journal" %}{% endif %}
       <ul class="pubs pubs--compact">
         {% for pub in selected limit: 4 %}{% include publication.html pub=pub show_year=true %}{% endfor %}
       </ul>
