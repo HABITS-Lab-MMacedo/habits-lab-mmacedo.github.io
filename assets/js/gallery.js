@@ -21,8 +21,11 @@
     if (img.complete && img.naturalWidth) li.classList.add('is-loaded');
   });
 
-  // ---- album filter ----
-  var chips = document.querySelectorAll('.chip[data-album]');
+  // album covers: same Drive fallback
+  document.querySelectorAll('.ig-highlight img[data-id]').forEach(function (img) { fallback(img, img.dataset.id, 200); });
+
+  // ---- album filter (highlight circles) ----
+  var chips = document.querySelectorAll('.ig-highlight[data-album]');
   Array.prototype.forEach.call(chips, function (chip) {
     chip.addEventListener('click', function () {
       var album = chip.dataset.album;
@@ -36,6 +39,7 @@
   if (!dialog || typeof dialog.showModal !== 'function') return;
   var big = document.getElementById('gallery-img');
   var caption = document.getElementById('gallery-caption');
+  var albumEl = document.getElementById('gallery-album');
   var count = document.getElementById('gallery-count');
   var current = 0, opener = null;
 
@@ -59,7 +63,8 @@
     hi.src = frame.dataset.large;
     big.alt = thumb.alt;
     caption.textContent = frame.dataset.caption || '';
-    count.textContent = (current + 1) + ' / ' + all.length;
+    albumEl.textContent = frame.dataset.albumName || '';
+    count.textContent = (current + 1) + ' of ' + all.length;
     var single = all.length < 2;
     dialog.querySelector('[data-prev]').hidden = single;
     dialog.querySelector('[data-next]').hidden = single;
@@ -82,7 +87,7 @@
   dialog.querySelector('[data-prev]').addEventListener('click', function () { step(-1); });
   dialog.querySelector('[data-next]').addEventListener('click', function () { step(1); });
   dialog.addEventListener('click', function (e) {
-    if (e.target === dialog || e.target.classList.contains('lightbox-stage')) dialog.close();
+    if (e.target === dialog) dialog.close();
   });
   dialog.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }

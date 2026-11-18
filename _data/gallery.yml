@@ -9,10 +9,10 @@
 #   drive    file ID (right-click the photo in Drive → Share → Copy link;
 #            the ID is the part between /d/ and /view)
 #   album    group used for the filter buttons, e.g. "Talks"
-#   caption  short text shown under the photo (optional)
+#   caption  short text shown on hover and in the photo viewer (optional)
 #   alt      description for screen readers (optional, falls back to caption)
-#   w, h     width and height (or just the ratio, e.g. 4 and 3) so the
-#            layout doesn't jump while photos load
+#
+# The grid shows square tiles (like Instagram); clicking a photo shows it whole.
 #
 # To hide a photo without deleting it, put a # in front of each of its lines.
 # ------------------------------------------------------------------
@@ -21,87 +21,57 @@
   album: Conferences
   caption: At IJCAI–ECAI 2026 in Bremen
   alt: Two researchers standing on either side of the IJCAI–ECAI Bremen 2026 welcome banner
-  w: 600
-  h: 1129
 
 - drive: 1hD6fqK86rIIsqKo9tYgf8i_ECigs_AJh
   album: Talks
   caption: "Talk: gender differences in mobility in Brazil and Colombia"
   alt: A speaker presenting a slide titled "Gender — Brazil and Colombia" to a seated audience
-  w: 4
-  h: 3
 
 - drive: 1Vwrs3bbWKsHbVVfnVguRIj8RyfhCidqI
   album: Conferences
   caption: We survived IJCAI–ECAI 2026!
   alt: Two researchers with conference badges smiling beside the IJCAI–ECAI Bremen 2026 banner
-  w: 600
-  h: 1067
 
 - drive: 1KsjsHEPKzv6DA-l2kjWwDFfts_izaNWG
   album: Lab life
   caption: Dinner with colleagues at al Gallo Rosso
   alt: A long table of smiling colleagues at dinner in a restaurant
-  w: 600
-  h: 269
 
 - drive: 1IOmnOkK0LAaFu_RkowYr7jzIArw71OuP
   album: Talks
   caption: "Talk: gender and return mechanisms in human mobility"
   alt: A speaker presenting a slide titled "Gender and return mechanisms" while a co-presenter looks on
-  w: 4
-  h: 3
 
 - drive: 1NRbKGkb9aT9XqeBL8N5qthjSKHBkubJI
   album: Conferences
   caption: In front of the IJCAI–ECAI 2026 sponsor wall
   alt: Two researchers posing in front of the IJCAI–ECAI 2026 sponsors wall
-  w: 600
-  h: 337
 
 - drive: 1G4flZbt2n8P77kFnG_bMw2IoVbpHkYZe
   album: Lab life
   caption: Lunch together after the sessions
   alt: A large group of researchers around a long table at a bright restaurant
-  w: 600
-  h: 269
 
 - drive: 1iK0VGlhptGF1zZp0Oenxz9GDtQVcq8As
   album: Talks
   caption: "Seminar: what is the impact?"
   alt: A speaker pointing at a projected slide titled "What is the impact?"
-  w: 600
-  h: 337
 
 - drive: 1-vmuhumLlwRHiGWPwMBkBZjhm2CPSnkY
   album: Lab life
   caption: A selfie with the whole table
   alt: A group selfie at a long restaurant table under the al Gallo Rosso sign
-  w: 4
-  h: 3
 
 # --- Near-duplicate shots (hidden). Remove the # to show one. ---
 # - drive: 1d_rv8npAESF5usbebv8dLWB7i7FCj0KV   # another dinner selfie
 #   album: Lab life
-#   w: 4
-#   h: 3
 # - drive: 1nN78KCBOZm_eoidugSJtCmrAVzW-rC9W   # lunch group (same as above)
 #   album: Lab life
-#   w: 600
-#   h: 269
 # - drive: 1X2evtTdS7Zucqw3cVe2g7EXueAYzFo-B   # lunch group
 #   album: Lab life
-#   w: 600
-#   h: 269
 # - drive: 11uRBSKnOCJr5hO9Z8bMrpo5xObxRKS8w   # lunch group
 #   album: Lab life
-#   w: 600
-#   h: 269
 # - drive: 19MmsYcImssWQRzm5dEFU1mRqEMWAg9fD   # lunch group
 #   album: Lab life
-#   w: 600
-#   h: 269
 # - drive: 11jgh2l839GrYEWAVjKLQLY9NLIEHMYWx   # lunch group
 #   album: Lab life
-#   w: 600
-#   h: 269

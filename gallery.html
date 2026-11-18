@@ -1,64 +1,108 @@
 ---
-layout: page
+layout: default
 title: Gallery
 slug: gallery
 permalink: /gallery/
-kicker: Lab life
-intro: Talks, conferences and time together — moments from the HABITS Lab and the people we work with.
-wide: true
+description: Talks, conferences and time together — moments from the HABITS Lab.
 scripts:
   - /assets/js/gallery.js
 ---
 {% assign photos = site.data.gallery %}
 {% assign albums = photos | map: "album" | uniq %}
 
-{% if albums.size > 1 %}
-<div class="toolbar">
-  <div class="chips" role="group" aria-label="Filter photos by album">
-    <button class="chip" type="button" data-album="all" aria-pressed="true">All <span class="chip-count">{{ photos.size }}</span></button>
-    {% for a in albums %}{% assign n = photos | where: "album", a | size %}
-    <button class="chip" type="button" data-album="{{ a | slugify }}" aria-pressed="false">{{ a }} <span class="chip-count">{{ n }}</span></button>
-    {% endfor %}
-  </div>
-</div>
-{% endif %}
-
-<ul class="gallery" id="gallery">
-  {% for ph in photos %}
-  {% assign alt = ph.alt | default: ph.caption | default: "Photo from the HABITS Lab" %}
-  <li class="gallery-item" data-album="{{ ph.album | slugify }}">
-    <button class="gallery-frame" type="button"
-            data-large="https://drive.google.com/thumbnail?id={{ ph.drive }}&amp;sz=w2000"
-            data-id="{{ ph.drive }}"
-            data-caption="{{ ph.caption | escape }}"
-            aria-label="View photo{% if ph.caption %}: {{ ph.caption | escape }}{% endif %}">
-      <img src="https://drive.google.com/thumbnail?id={{ ph.drive }}&amp;sz=w900"
-           alt="{{ alt | escape }}" loading="lazy" decoding="async" referrerpolicy="no-referrer"
-           {% if ph.w and ph.h %}style="aspect-ratio: {{ ph.w }} / {{ ph.h }}"{% endif %}>
-    </button>
-    {% if ph.caption %}<p class="gallery-caption">{{ ph.caption }}</p>{% endif %}
-  </li>
-  {% endfor %}
-</ul>
-
-<dialog class="lightbox" id="gallery-lightbox" aria-label="Photo viewer">
-  <div class="lightbox-bar">
-    <p class="lightbox-title" id="gallery-caption"></p>
-    <div class="lightbox-actions">
-      <span class="lightbox-count" id="gallery-count"></span>
-      <button class="lightbox-btn" type="button" data-close aria-label="Close viewer">
-        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
-      </button>
+<div class="wrap ig">
+  <header class="ig-profile">
+    <div class="ig-avatar" aria-hidden="true">
+      <svg class="brand-mark" viewBox="0 0 32 32">
+        <line x1="8" y1="9" x2="22" y2="7" /><line x1="8" y1="9" x2="11" y2="23" />
+        <line x1="22" y1="7" x2="24" y2="21" /><line x1="11" y1="23" x2="24" y2="21" />
+        <line x1="8" y1="9" x2="24" y2="21" />
+        <circle cx="8" cy="9" r="3.2" class="n1" /><circle cx="22" cy="7" r="2.4" class="n2" />
+        <circle cx="11" cy="23" r="2.4" class="n2" /><circle cx="24" cy="21" r="3.2" class="n3" />
+      </svg>
     </div>
-  </div>
-  <div class="lightbox-stage">
-    <button class="lightbox-btn lightbox-nav lightbox-nav--prev" type="button" data-prev aria-label="Previous photo">
-      <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+    <div class="ig-info">
+      <p class="kicker">Lab life</p>
+      <h1>Gallery</h1>
+      <ul class="ig-stats">
+        <li><strong>{{ photos.size }}</strong> photos</li>
+        <li><strong>{{ albums.size }}</strong> albums</li>
+        <li>{{ site.institution.name }} · Bremen</li>
+      </ul>
+      <p class="ig-bio">Talks, conferences and time together — moments from the {{ site.title }} and the people we work with.</p>
+    </div>
+  </header>
+
+  {% if albums.size > 1 %}
+  <nav class="ig-highlights" aria-label="Albums">
+    <button class="ig-highlight" type="button" data-album="all" aria-pressed="true">
+      <span class="ig-ring"><span class="ig-ring-inner ig-ring-all">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </span></span>
+      <span class="ig-highlight-label">All</span>
     </button>
-    <img id="gallery-img" alt="" referrerpolicy="no-referrer">
-    <button class="lightbox-btn lightbox-nav lightbox-nav--next" type="button" data-next aria-label="Next photo">
-      <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+    {% for a in albums %}{% assign cover = photos | where: "album", a | first %}
+    <button class="ig-highlight" type="button" data-album="{{ a | slugify }}" aria-pressed="false">
+      <span class="ig-ring"><span class="ig-ring-inner">
+        <img src="https://drive.google.com/thumbnail?id={{ cover.drive }}&amp;sz=w200" alt="" loading="lazy" referrerpolicy="no-referrer" data-id="{{ cover.drive }}">
+      </span></span>
+      <span class="ig-highlight-label">{{ a }}</span>
     </button>
+    {% endfor %}
+  </nav>
+  {% endif %}
+
+  <div class="ig-tabs" aria-hidden="true">
+    <span class="ig-tab is-active">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+      Photos
+    </span>
   </div>
-  <p class="lightbox-hint">← → to browse · Esc to close</p>
+
+  <ul class="ig-grid" id="gallery">
+    {% for ph in photos %}
+    {% assign alt = ph.alt | default: ph.caption | default: "Photo from the HABITS Lab" %}
+    <li class="gallery-item" data-album="{{ ph.album | slugify }}">
+      <button class="gallery-frame" type="button"
+              data-large="https://drive.google.com/thumbnail?id={{ ph.drive }}&amp;sz=w2000"
+              data-id="{{ ph.drive }}"
+              data-caption="{{ ph.caption | escape }}"
+              data-album-name="{{ ph.album | escape }}"
+              aria-label="Open photo{% if ph.caption %}: {{ ph.caption | escape }}{% endif %}">
+        <img src="https://drive.google.com/thumbnail?id={{ ph.drive }}&amp;sz=w640"
+             alt="{{ alt | escape }}" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+        <span class="ig-overlay">
+          {% if ph.caption %}<span class="ig-overlay-caption">{{ ph.caption }}</span>{% endif %}
+          {% if ph.album %}<span class="ig-overlay-album">{{ ph.album }}</span>{% endif %}
+        </span>
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<dialog class="ig-viewer" id="gallery-lightbox" aria-label="Photo viewer">
+  <button class="ig-close" type="button" data-close aria-label="Close">
+    <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <button class="ig-nav ig-nav--prev" type="button" data-prev aria-label="Previous photo">
+    <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
+  <div class="ig-card">
+    <div class="ig-media"><img id="gallery-img" alt="" referrerpolicy="no-referrer"></div>
+    <aside class="ig-side">
+      <div class="ig-side-head">
+        <span class="ig-mini-avatar" aria-hidden="true"><svg class="brand-mark" viewBox="0 0 32 32"><line x1="8" y1="9" x2="22" y2="7" /><line x1="8" y1="9" x2="11" y2="23" /><line x1="22" y1="7" x2="24" y2="21" /><line x1="11" y1="23" x2="24" y2="21" /><circle cx="8" cy="9" r="3.2" class="n1" /><circle cx="22" cy="7" r="2.4" class="n2" /><circle cx="11" cy="23" r="2.4" class="n2" /><circle cx="24" cy="21" r="3.2" class="n3" /></svg></span>
+        <div>
+          <p class="ig-side-name">{{ site.title }}</p>
+          <p class="ig-side-album" id="gallery-album"></p>
+        </div>
+      </div>
+      <p class="ig-side-caption" id="gallery-caption"></p>
+      <p class="ig-side-count" id="gallery-count"></p>
+    </aside>
+  </div>
+  <button class="ig-nav ig-nav--next" type="button" data-next aria-label="Next photo">
+    <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
 </dialog>
