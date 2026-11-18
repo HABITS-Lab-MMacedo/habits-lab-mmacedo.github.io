@@ -40,6 +40,8 @@ navigation:
     url: /teaching/
   - title: News
     url: /news/
+  - title: Gallery
+    url: /gallery/
   - title: Join us
     url: /join/
 

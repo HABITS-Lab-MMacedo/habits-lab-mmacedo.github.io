@@ -549,6 +549,37 @@ body.has-lightbox { overflow: hidden; }
   .lightbox-hint { display: none; }
 }
 
+/* ---------- gallery ---------- */
+.gallery { list-style: none; margin: 0; padding: 0; columns: 3 280px; column-gap: 18px; }
+.gallery-item { break-inside: avoid; margin: 0 0 18px; display: inline-block; width: 100%; }
+.gallery-item[hidden] { display: none; }
+.gallery-frame {
+  position: relative; display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in; overflow: hidden;
+  border-radius: var(--radius); background: var(--bg-tint);
+}
+.gallery-frame::after { /* soft loading shimmer */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(100deg, transparent 20%, color-mix(in srgb, var(--surface) 55%, transparent) 50%, transparent 80%);
+  background-size: 200% 100%; animation: shimmer 1.4s linear infinite;
+}
+.is-loaded .gallery-frame::after { display: none; }
+@keyframes shimmer { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+.gallery-frame img {
+  width: 100%; height: auto; object-fit: cover; opacity: 0;
+  transition: opacity .4s ease, transform .5s cubic-bezier(.2,.7,.3,1), filter .3s ease;
+}
+.is-loaded .gallery-frame img { opacity: 1; }
+.gallery-frame:hover img, .gallery-frame:focus-visible img { transform: scale(1.04); filter: saturate(1.08); }
+.gallery-frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.gallery-caption { margin: 8px 4px 0; font-size: .88rem; color: var(--ink-soft); line-height: 1.4; }
+@media (prefers-reduced-motion: reduce) {
+  .gallery-frame::after { animation: none; }
+  .gallery-frame img { transition: none; }
+  .gallery-frame:hover img { transform: none; }
+}
+#gallery-img { cursor: default; background: none; }
+.lightbox-count { font-family: var(--font-mono); font-size: .8rem; color: rgba(235,232,225,.6); margin-right: 6px; }
+
 /* research page teaser */
 .poster-teaser { margin: 0 0 48px; }
 .poster-teaser .section-head p { margin: 4px 0 0; color: var(--ink-soft); }

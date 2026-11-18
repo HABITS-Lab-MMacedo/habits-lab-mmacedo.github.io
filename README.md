@@ -85,6 +85,7 @@ The site is then live at **https://habits-lab-mmacedo.github.io**.
 | Research themes | `_data/research.yml` |
 | Publications | `_data/publications.yml` |
 | Posters | `_data/posters.yml` + previews in `assets/img/posters/` (PDFs live on Google Drive) |
+| Gallery photos | `_data/gallery.yml` (photos live in the lab's Google Drive folder) |
 | Conference deadlines | `_data/deadlines.yml` |
 | Courses and teaching material | `_data/teaching.yml` |
 | News | one Markdown file per post in `_posts/` |

@@ -8,3 +8,5 @@ vendor/
 
 # Poster PDFs are hosted on Google Drive (see _data/posters.yml)
 /posters/
+
+__pycache__/

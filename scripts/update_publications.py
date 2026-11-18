@@ -10,8 +10,7 @@ Source:
   * OpenAlex (https://openalex.org) otherwise — free, no key needed.
 
 Run by .github/workflows/update-publications.yml every week, or by hand:
-  python3 scripts/update_publications.py --scholar-id 1tGv4IIAAAAJ --openalex A5009239429
-  SERPAPI_KEY=... python3 scripts/update_publications.py --scholar-id 1tGv4IIAAAAJ
+  python3 scripts/update_publications.py --name "Mariana Macedo" --scholar-id 1tGv4IIAAAAJ --openalex A5009239429
 
 Only the Python standard library is used.
 """
@@ -51,6 +50,19 @@ def classify(venue, title=""):
     return "journal"
 
 
+NAME = ""  # the PI's preferred name, set from --name
+
+
+def preferred_name(authors):
+    """Write the PI as NAME in a Scholar author string (Scholar uses initials, e.g. "MGM Macedo")."""
+    if not NAME:
+        return authors
+    parts = NAME.split()
+    first, last = parts[0], parts[-1]
+    pattern = r"\b(?:" + re.escape(first) + r"(?: [\w.]+)*?|" + first[0] + r"[A-Z.]*(?: ?[A-Z]\.?)*) " + re.escape(last) + r"\b"
+    return re.sub(pattern, NAME, authors)
+
+
 def get_json(url):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=60) as r:
@@ -76,7 +88,7 @@ def from_scholar(author_id, key):
             year = a.get("year") or ""
             items.append({
                 "title": a.get("title", "").strip(),
-                "authors": a.get("authors", ""),
+                "authors": preferred_name(a.get("authors", "")),
                 "venue": venue,
                 "year": int(year) if str(year).isdigit() else None,
                 "type": classify(pub, a.get("title", "")),
@@ -100,7 +112,9 @@ def from_openalex(author_id):
         loc = w.get("primary_location") or {}
         src = loc.get("source") or {}
         venue = src.get("display_name") or ""
-        authors = [((a.get("author") or {}).get("display_name") or "") for a in w.get("authorships") or []]
+        authors = [NAME if NAME and author_id in ((a.get("author") or {}).get("id") or "")
+                   else ((a.get("author") or {}).get("display_name") or "")
+                   for a in w.get("authorships") or []]
         if len(authors) > 12:
             authors = authors[:10] + ["…"]
         t = w.get("type")
@@ -135,7 +149,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scholar-id", default="")
     ap.add_argument("--openalex", default="")
+    ap.add_argument("--name", default="", help='how the PI is written in author lists, e.g. "Mariana Macedo"')
     args = ap.parse_args()
+    global NAME
+    NAME = args.name.strip()
 
     key = os.environ.get("SERPAPI_KEY", "").strip()
     if key and args.scholar_id:

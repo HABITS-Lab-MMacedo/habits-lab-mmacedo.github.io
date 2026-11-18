@@ -28,7 +28,7 @@ jobs:
       - name: Fetch publications
         env:
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
-        run: python3 scripts/update_publications.py --scholar-id 1tGv4IIAAAAJ --openalex A5009239429
+        run: python3 scripts/update_publications.py --name "Mariana Macedo" --scholar-id 1tGv4IIAAAAJ --openalex A5009239429
 
       - name: Commit if changed
         id: commit

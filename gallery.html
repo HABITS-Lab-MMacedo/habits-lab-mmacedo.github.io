@@ -1,0 +1,64 @@
+---
+layout: page
+title: Gallery
+slug: gallery
+permalink: /gallery/
+kicker: Lab life
+intro: Talks, conferences and time together — moments from the HABITS Lab and the people we work with.
+wide: true
+scripts:
+  - /assets/js/gallery.js
+---
+{% assign photos = site.data.gallery %}
+{% assign albums = photos | map: "album" | uniq %}
+
+{% if albums.size > 1 %}
+<div class="toolbar">
+  <div class="chips" role="group" aria-label="Filter photos by album">
+    <button class="chip" type="button" data-album="all" aria-pressed="true">All <span class="chip-count">{{ photos.size }}</span></button>
+    {% for a in albums %}{% assign n = photos | where: "album", a | size %}
+    <button class="chip" type="button" data-album="{{ a | slugify }}" aria-pressed="false">{{ a }} <span class="chip-count">{{ n }}</span></button>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<ul class="gallery" id="gallery">
+  {% for ph in photos %}
+  {% assign alt = ph.alt | default: ph.caption | default: "Photo from the HABITS Lab" %}
+  <li class="gallery-item" data-album="{{ ph.album | slugify }}">
+    <button class="gallery-frame" type="button"
+            data-large="https://drive.google.com/thumbnail?id={{ ph.drive }}&amp;sz=w2000"
+            data-id="{{ ph.drive }}"
+            data-caption="{{ ph.caption | escape }}"
+            aria-label="View photo{% if ph.caption %}: {{ ph.caption | escape }}{% endif %}">
+      <img src="https://drive.google.com/thumbnail?id={{ ph.drive }}&amp;sz=w900"
+           alt="{{ alt | escape }}" loading="lazy" decoding="async" referrerpolicy="no-referrer"
+           {% if ph.w and ph.h %}style="aspect-ratio: {{ ph.w }} / {{ ph.h }}"{% endif %}>
+    </button>
+    {% if ph.caption %}<p class="gallery-caption">{{ ph.caption }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+<dialog class="lightbox" id="gallery-lightbox" aria-label="Photo viewer">
+  <div class="lightbox-bar">
+    <p class="lightbox-title" id="gallery-caption"></p>
+    <div class="lightbox-actions">
+      <span class="lightbox-count" id="gallery-count"></span>
+      <button class="lightbox-btn" type="button" data-close aria-label="Close viewer">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="lightbox-stage">
+    <button class="lightbox-btn lightbox-nav lightbox-nav--prev" type="button" data-prev aria-label="Previous photo">
+      <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <img id="gallery-img" alt="" referrerpolicy="no-referrer">
+    <button class="lightbox-btn lightbox-nav lightbox-nav--next" type="button" data-next aria-label="Next photo">
+      <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+  <p class="lightbox-hint">← → to browse · Esc to close</p>
+</dialog>
