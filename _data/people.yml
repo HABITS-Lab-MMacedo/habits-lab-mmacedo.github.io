@@ -22,8 +22,8 @@ groups:
         title: Prof. Dr.
         role: Assistant Professor of Computer Science & Engineering
         topic: network science, complex systems, human behaviour
-        photo: /assets/img/people/example.png   # TODO: real photo
-        gif: /assets/img/people/example.gif     # TODO: real GIF
+        photo: /assets/img/people/mariana-macedo.jpg   # first frame of the video below
+        gif: /assets/img/people/mariana-macedo.mp4     # a .gif, .mp4 or .webm all work
         link: /people/mariana-macedo/
         # --- Everything below is shown on the PI's own page
         #     (mariana-macedo.html → /people/mariana-macedo/).

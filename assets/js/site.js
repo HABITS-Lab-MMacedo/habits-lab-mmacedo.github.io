@@ -62,8 +62,22 @@
   document.querySelectorAll('.person-photo img[data-gif]').forEach(function (img) {
     var box = img.parentElement;
     var card = img.closest('.person');
-    var play = function () { img.src = img.dataset.gif; box.classList.add('is-playing'); };
-    var stop = function () { img.src = img.dataset.static; box.classList.remove('is-playing'); };
+    var play, stop;
+    if (/\.(mp4|webm)$/i.test(img.dataset.gif)) {
+      // short video clip instead of a GIF: same behaviour, much smaller file
+      var video = document.createElement('video');
+      video.className = 'person-video';
+      video.muted = true; video.loop = true; video.playsInline = true;
+      video.preload = 'none';
+      video.setAttribute('aria-hidden', 'true');
+      video.src = img.dataset.gif;
+      box.appendChild(video);
+      play = function () { box.classList.add('is-playing'); var pr = video.play(); if (pr) pr.catch(function () {}); };
+      stop = function () { box.classList.remove('is-playing'); video.pause(); video.currentTime = 0; };
+    } else {
+      play = function () { img.src = img.dataset.gif; box.classList.add('is-playing'); };
+      stop = function () { img.src = img.dataset.static; box.classList.remove('is-playing'); };
+    }
 
     if (autoplay) {
       // phones/tablets: start the GIF when the card scrolls into view
