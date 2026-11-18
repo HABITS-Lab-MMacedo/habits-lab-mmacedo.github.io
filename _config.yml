@@ -5,10 +5,11 @@
 
 title: HABITS Lab
 # TODO: replace with the official meaning of the acronym, if there is one
-tagline: Human behaviour, network science & complex systems
+tagline: Human behaviour, AI & network science
 description: >-
-  The HABITS Lab at Constructor University (Bremen) studies human behaviour
-  through networks, data and computational models.
+  The HABITS Lab at Constructor University (Bremen) studies human behaviour,
+  artificial intelligence algorithms and their intersection through networks,
+  data and computational models.
 
 # Organisation site: https://habits-lab-mmacedo.github.io
 url: "https://habits-lab-mmacedo.github.io"
