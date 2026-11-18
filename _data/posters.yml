@@ -1,0 +1,79 @@
+# ------------------------------------------------------------------
+# POSTERS
+# Each entry becomes a card on the Posters page (/research/posters/).
+# The newest poster should go FIRST.
+#
+# Per poster:
+#   title     (required)
+#   subtitle  optional second line
+#   authors   list of names — lab members (from people.yml) are highlighted
+#   venue     optional, e.g. "NetSci 2024, Québec"
+#   year      optional
+#   topic     short label used for the filter chips, e.g. "Mobility"
+#   drive     Google Drive file ID of the PDF (see below)
+#   pdf       instead of drive: a link or path to the PDF, e.g. https://… or /posters/poster5.pdf
+#   image     small preview (~900px), e.g. /assets/img/posters/poster5.jpg
+#   large     big preview for the viewer (~2200px), e.g. /assets/img/posters/poster5-large.jpg
+#   summary   one or two sentences about the poster
+#
+# Getting the Drive file ID:
+#   1. Upload the PDF to the lab's posters folder on Google Drive:
+#      https://drive.google.com/drive/folders/1JobsIaazGFmj3oDSBdgE_xA8ktxIwbdK
+#      (the folder must stay shared as "Anyone with the link can view")
+#   2. Right-click the file → Share → Copy link. The link looks like
+#      https://drive.google.com/file/d/1AbCdEf…XyZ/view?usp=sharing
+#      The ID is the part between /d/ and /view.
+#
+# The PDFs themselves are NOT stored in this repository (it would grow
+# too fast). Keep local copies in posters/ — that folder is git-ignored.
+#
+# Making the preview images on a Mac (run from the repository folder):
+#   sips -s format jpeg -s formatOptions 80 -Z 900  posters/poster5.pdf --out assets/img/posters/poster5.jpg
+#   sips -s format jpeg -s formatOptions 78 -Z 2200 posters/poster5.pdf --out assets/img/posters/poster5-large.jpg
+# ------------------------------------------------------------------
+
+- title: "Gendered pathways in academia: from MSc to PhD"
+  authors: [Valentina Ferrada, Martina Santibáñez, Carlos Navarrete, Mariana Macedo]
+  venue: ""   # TODO
+  year: ""    # TODO
+  topic: Academia
+  drive: 1w5bd0cb0siMoo4hfdGlzPuRshT1ASXSl   # poster4.pdf
+  image: /assets/img/posters/poster4.jpg
+  large: /assets/img/posters/poster4-large.jpg
+  summary: >-
+    Using 530,161 Brazilian MSc and PhD records (1990–2020), we find that men move from MSc to PhD at higher rates than women in 11 of 12 fields, and that supervisor networks and mobility corridors carry gendered patterns.
+
+- title: "Let's tweet about Soccer?"
+  subtitle: a gender-centric question
+  authors: [Mariana Macedo, Akrati Saxena]
+  venue: ""   # TODO
+  year: ""    # TODO
+  topic: Social media
+  drive: 1me3Lhc_eCGhjfogF9mMnNOnc5KLpj05q   # poster3.pdf
+  image: /assets/img/posters/poster3.jpg
+  large: /assets/img/posters/poster3-large.jpg
+  summary: >-
+    Ten million soccer tweets in English and Portuguese show how women and men communicate, which emotions they express, and how homophily relates to those emotions.
+
+- title: Academic Mobility as a Driver of Productivity
+  subtitle: a gender-centric approach
+  authors: [Mariana Macedo, Ana Maria Jaramillo, Ronaldo Menezes]
+  venue: ""   # TODO
+  year: ""    # TODO
+  topic: Academia
+  drive: 1k5RJ8S8CSK2ZWb6FkHHyMfuJR9U82ake   # poster2.pdf
+  image: /assets/img/posters/poster2.jpg
+  large: /assets/img/posters/poster2-large.jpg
+  summary: >-
+    National and international mobility raises productivity for everyone, but women who move gain productivity without a matching gain in citation impact.
+
+- title: Gender differences in work-related mobility in Colombia
+  authors: [Mariana Macedo, Laura Lotero, Alessio Cardillo, Ronaldo Menezes, Hugo Barbosa]
+  venue: ""   # TODO
+  year: ""    # TODO
+  topic: Mobility
+  drive: 1Ya-aylQwPtIa6jyDjqR1Twg7HfFXQSSi   # poster1.pdf
+  image: /assets/img/posters/poster1.jpg
+  large: /assets/img/posters/poster1-large.jpg
+  summary: >-
+    Network science and clustering on commuting surveys from the Aburrá Valley (2005 and 2017) show that work trips became more gender-neutral over time, with the strongest imbalance among low- and middle-income groups.

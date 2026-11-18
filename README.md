@@ -83,6 +83,7 @@ The site is then live at **https://habits-lab-mmacedo.github.io**.
 | People (photos and GIFs) | `_data/people.yml` + images in `assets/img/people/` |
 | Research themes | `_data/research.yml` |
 | Publications | `_data/publications.yml` |
+| Posters | `_data/posters.yml` + previews in `assets/img/posters/` (PDFs live on Google Drive) |
 | Conference deadlines | `_data/deadlines.yml` |
 | Courses and teaching material | `_data/teaching.yml` |
 | News | one Markdown file per post in `_posts/` |
@@ -169,6 +170,18 @@ The two entries currently in the file are examples and should be replaced.
 
 ---
 
+## Adding a poster
+
+1. Upload the PDF to the [lab's posters folder on Google Drive](https://drive.google.com/drive/folders/1JobsIaazGFmj3oDSBdgE_xA8ktxIwbdK) and copy its file ID (the part between `/d/` and `/view` in its share link). The folder must stay shared as "Anyone with the link can view".
+2. Save a local copy in `posters/` (this folder is git-ignored, so PDFs never get committed) and make two preview images (on a Mac, from the repository folder):
+   ```
+   sips -s format jpeg -s formatOptions 80 -Z 900  posters/poster5.pdf --out assets/img/posters/poster5.jpg
+   sips -s format jpeg -s formatOptions 78 -Z 2200 posters/poster5.pdf --out assets/img/posters/poster5-large.jpg
+   ```
+3. Add an entry at the **top** of `_data/posters.yml` with `drive: <file ID>` (the file explains every field).
+
+The poster appears on `/research/posters/`, and the four newest also appear on the Research page.
+
 ## Adding a conference deadline
 
 Add an entry to `_data/deadlines.yml`:
@@ -242,3 +255,4 @@ Open <http://localhost:4000>. Changes to files reload automatically (except
 - [ ] Real members, photos and GIFs (`_data/people.yml`) — current entries are examples
 - [ ] Real publications (`_data/publications.yml`) — current entries are examples
 - [ ] Review the research theme texts with the PI (`_data/research.yml`)
+- [ ] Add venue and year to each poster (`_data/posters.yml`)

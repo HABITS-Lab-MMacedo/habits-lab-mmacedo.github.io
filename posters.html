@@ -1,0 +1,86 @@
+---
+layout: page
+title: Posters
+slug: posters
+permalink: /research/posters/
+kicker: <a href="/research/">Research</a> / Posters
+intro: Posters the lab has presented at conferences and workshops. Click one to view it full size, or download the PDF.
+wide: true
+scripts:
+  - /assets/js/posters.js
+---
+{% assign members = "|" %}
+{% for group in site.data.people.groups %}{% for m in group.members %}{% assign members = members | append: m.name | append: "|" %}{% endfor %}{% endfor %}
+{% assign topics = site.data.posters | map: "topic" | uniq | sort %}
+
+{% if topics.size > 1 %}
+<div class="toolbar">
+  <div class="chips" role="group" aria-label="Filter posters by topic">
+    <button class="chip" type="button" data-topic="all" aria-pressed="true">All <span class="chip-count">{{ site.data.posters.size }}</span></button>
+    {% for t in topics %}{% assign n = site.data.posters | where: "topic", t | size %}
+    <button class="chip" type="button" data-topic="{{ t | slugify }}" aria-pressed="false">{{ t }} <span class="chip-count">{{ n }}</span></button>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<ul class="posters" id="poster-list">
+  {% for p in site.data.posters %}
+  {% if p.drive %}
+    {% capture pdf_view %}https://drive.google.com/file/d/{{ p.drive }}/view{% endcapture %}
+    {% capture pdf_download %}https://drive.google.com/uc?export=download&amp;id={{ p.drive }}{% endcapture %}
+  {% else %}
+    {% assign pdf_view = p.pdf | relative_url %}
+    {% assign pdf_download = pdf_view %}
+  {% endif %}
+  <li class="poster" data-topic="{{ p.topic | slugify }}">
+    <button class="poster-frame" type="button"
+            data-index="{{ forloop.index0 }}"
+            data-large="{{ p.large | default: p.image | relative_url }}"
+            data-pdf="{{ pdf_view }}"
+            data-title="{{ p.title | escape }}{% if p.subtitle %}: {{ p.subtitle | escape }}{% endif %}"
+            aria-label="View poster: {{ p.title | escape }}">
+      <img src="{{ p.image | relative_url }}" alt="Poster: {{ p.title | escape }}" loading="lazy" decoding="async">
+      <span class="poster-zoom" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg>
+      </span>
+    </button>
+    <div class="poster-info">
+      <p class="poster-meta">
+        {% if p.topic %}<span class="tag tag--topic">{{ p.topic }}</span>{% endif %}
+        {% if p.venue and p.venue != "" %}<span>{{ p.venue }}</span>{% endif %}
+        {% if p.year and p.year != "" %}<span>{{ p.year }}</span>{% endif %}
+      </p>
+      <h2 class="poster-title">{{ p.title }}{% if p.subtitle %} <span>{{ p.subtitle }}</span>{% endif %}</h2>
+      <p class="poster-authors">{% for a in p.authors %}{% capture key %}|{{ a }}|{% endcapture %}{% if members contains key %}<mark>{{ a }}</mark>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+      {% if p.summary %}<p class="poster-summary">{{ p.summary }}</p>{% endif %}
+      <p class="poster-links">
+        <a href="{{ pdf_view }}" target="_blank" rel="noopener">Open PDF ↗</a>
+        <a href="{{ pdf_download }}"{% unless p.drive %} download{% endunless %}>Download</a>
+      </p>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+<dialog class="lightbox" id="poster-lightbox" aria-label="Poster viewer">
+  <div class="lightbox-bar">
+    <p class="lightbox-title" id="lightbox-title"></p>
+    <div class="lightbox-actions">
+      <a class="btn btn--small" id="lightbox-pdf" href="#" target="_blank" rel="noopener">PDF ↗</a>
+      <button class="lightbox-btn" type="button" data-close aria-label="Close viewer">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="lightbox-stage">
+    <button class="lightbox-btn lightbox-nav lightbox-nav--prev" type="button" data-prev aria-label="Previous poster">
+      <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <img id="lightbox-img" alt="">
+    <button class="lightbox-btn lightbox-nav lightbox-nav--next" type="button" data-next aria-label="Next poster">
+      <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+  <p class="lightbox-hint">Click the image to zoom · ← → to browse · Esc to close</p>
+</dialog>

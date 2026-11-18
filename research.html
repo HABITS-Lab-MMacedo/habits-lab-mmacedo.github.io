@@ -26,6 +26,23 @@ intro: We combine network science, data and computational models to understand h
   {% endfor %}
 </ul>
 
+{% if site.data.posters.size > 0 %}
+<section class="poster-teaser" aria-labelledby="posters-heading">
+  <div class="section-head">
+    <div>
+      <h2 id="posters-heading">Posters</h2>
+      <p>Work we have presented at conferences and workshops.</p>
+    </div>
+    <a class="more" href="{{ '/research/posters/' | relative_url }}">See all {{ site.data.posters.size }} posters →</a>
+  </div>
+  <ul class="poster-strip">
+    {% for p in site.data.posters limit: 4 %}
+    <li><a href="{{ '/research/posters/' | relative_url }}" aria-label="{{ p.title | escape }}"><img src="{{ p.image | relative_url }}" alt="Poster: {{ p.title | escape }}" loading="lazy"></a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 <div class="cta">
   <div>
     <h2>Code &amp; data</h2>
